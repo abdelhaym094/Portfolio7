@@ -9,16 +9,36 @@
 }
 
 
-*{
-  scroll-behavior:smooth;
+/* Smooth scrolling */
+
+html {
+
+  scroll-behavior: smooth;
+
 }
+
+
+
+/* Prevent mobile overflow */
+
+* {
+
+  box-sizing: border-box;
+
+}
+
 
 
 body {
 
-  margin:0;
+  margin: 0;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
 
   background:
+
   radial-gradient(
     circle at 10% 20%,
     rgba(234,179,8,0.15),
@@ -39,9 +59,18 @@ body {
   );
 
 
-  color:white;
+  color: var(--foreground);
 
-  min-height:100vh;
+  font-family:
+
+  Arial,
+  Helvetica,
+  sans-serif;
+
+
+  -webkit-font-smoothing: antialiased;
+
+  -moz-osx-font-smoothing: grayscale;
 
 }
 
@@ -49,13 +78,17 @@ body {
 
 /* Moving light effect */
 
-body::before{
+body::before {
+
 
 content:"";
 
+
 position:fixed;
 
+
 inset:0;
+
 
 background:
 
@@ -67,13 +100,21 @@ transparent
 );
 
 
+
 animation:
-moveLight 8s infinite;
+
+moveLight 10s infinite linear;
+
 
 
 pointer-events:none;
 
+
+z-index:0;
+
+
 }
+
 
 
 
@@ -82,21 +123,23 @@ pointer-events:none;
 
 0%{
 
-transform:translateX(-100%);
+transform:translateX(-120%);
 
 }
+
 
 
 50%{
 
-transform:translateX(100%);
+transform:translateX(120%);
 
 }
+
 
 
 100%{
 
-transform:translateX(-100%);
+transform:translateX(-120%);
 
 }
 
@@ -106,7 +149,8 @@ transform:translateX(-100%);
 
 
 
-/* Glass effect */
+
+/* Glass Effect */
 
 .glass{
 
@@ -116,9 +160,17 @@ background:
 rgba(255,255,255,0.05);
 
 
+
 backdrop-filter:
 
 blur(20px);
+
+
+
+-webkit-backdrop-filter:
+
+blur(20px);
+
 
 
 border:
@@ -126,9 +178,38 @@ border:
 1px solid rgba(255,255,255,0.1);
 
 
+
 box-shadow:
 
 0 20px 50px rgba(0,0,0,0.3);
+
+
+}
+
+
+
+
+/* Better mobile experience */
+
+@media (max-width:768px){
+
+
+body::before{
+
+animation-duration:15s;
+
+}
+
+
+
+.glass{
+
+backdrop-filter:blur(12px);
+
+-webkit-backdrop-filter:blur(12px);
+
+}
+
 
 
 }

@@ -13,6 +13,12 @@ export default function ParticlesBackground() {
 
       options={{
 
+        fullScreen: {
+          enable: true,
+          zIndex: -10,
+        },
+
+
         background: {
           color: {
             value: "#020617",
@@ -20,66 +26,161 @@ export default function ParticlesBackground() {
         },
 
 
-        fpsLimit: 120,
+        fpsLimit: 60,
+
+
+        detectRetina: true,
+
 
 
         particles: {
 
+
           number: {
-            value: 70,
-          },
 
+            value: 45,
 
-          color: {
-            value: "#facc15",
-          },
+            density: {
 
+              enable: true,
 
-          links: {
-
-            enable: true,
-
-            color: "#facc15",
-
-            opacity: 0.3,
-
-          },
-
-
-          move: {
-
-            enable: true,
-
-            speed: 1,
-
-          },
-
-
-          size: {
-
-            value: {
-
-              min: 1,
-
-              max: 3,
+              area: 900,
 
             },
 
           },
 
 
-          opacity: {
 
-            value: 0.5,
+          color: {
+
+            value: "#facc15",
 
           },
+
+
+
+          links: {
+
+
+            enable: true,
+
+            distance: 150,
+
+            color:"#facc15",
+
+            opacity:0.25,
+
+            width:1,
+
+
+          },
+
+
+
+          move:{
+
+
+            enable:true,
+
+            speed:0.7,
+
+            direction:"none",
+
+            random:false,
+
+            straight:false,
+
+
+          },
+
+
+
+
+          size:{
+
+
+            value:{
+
+
+              min:1,
+
+              max:3,
+
+
+            },
+
+
+          },
+
+
+
+
+          opacity:{
+
+
+            value:0.45,
+
+
+          },
+
 
         },
 
 
+
+        responsive:[
+
+          {
+
+            maxWidth:768,
+
+
+            options:{
+
+
+              fpsLimit:40,
+
+
+              particles:{
+
+
+                number:{
+
+
+                  value:20,
+
+
+                },
+
+
+
+                links:{
+
+
+                  enable:false,
+
+
+                },
+
+
+              },
+
+
+            },
+
+
+          },
+
+
+        ],
+
+
       }}
 
+
     />
+
 
   );
 

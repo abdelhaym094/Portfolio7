@@ -20,17 +20,20 @@ export default function Home() {
 
 return (
 
-<main className="
+<main
+className="
 min-h-screen
 text-white
 overflow-hidden
 relative
-">
+"
+>
 
 
 {/* BACKGROUND */}
 
-<div className="
+<div
+className="
 absolute
 inset-0
 bg-gradient-to-br
@@ -38,37 +41,50 @@ from-[#020617]
 via-[#0f172a]
 to-black
 z-[-2]
-"/>
+"
+/>
 
 
 
 {/* GOLD LIGHT */}
 
-<div className="
+<div
+className="
 absolute
 top-20
-left-10
-w-96
-h-96
+left-5
+sm:left-10
+w-72
+sm:w-96
+h-72
+sm:h-96
 bg-yellow-400/20
-blur-[140px]
+blur-[100px]
+sm:blur-[140px]
 rounded-full
-"/>
+"
+/>
 
 
 
 {/* BLUE LIGHT */}
 
-<div className="
+<div
+className="
 absolute
 bottom-10
-right-10
-w-96
-h-96
+right-5
+sm:right-10
+w-72
+sm:w-96
+h-72
+sm:h-96
 bg-blue-500/20
-blur-[150px]
+blur-[100px]
+sm:blur-[140px]
 rounded-full
-"/>
+"
+/>
 
 
 
@@ -76,10 +92,12 @@ rounded-full
 
 
 
-<div className="
+<div
+className="
 relative
 z-10
-">
+"
+>
 
 
 <Navbar />
@@ -88,24 +106,32 @@ z-10
 
 {/* HERO */}
 
-<section className="
+<section
+className="
 min-h-screen
 flex
 items-center
-px-6
-pt-24
-">
+px-4
+sm:px-6
+pt-28
+pb-16
+"
+>
 
 
-<div className="
+<div
+className="
 max-w-7xl
 mx-auto
 w-full
 grid
+grid-cols-1
 md:grid-cols-2
-gap-16
+gap-12
+md:gap-16
 items-center
-">
+"
+>
 
 
 
@@ -132,17 +158,22 @@ duration:1
 
 
 
-<div className="
+<div
+className="
 inline-flex
 bg-yellow-400/10
 border
 border-yellow-400/30
-px-5
+px-3
+sm:px-5
 py-2
 rounded-full
 text-yellow-400
 mb-6
-">
+text-sm
+sm:text-base
+"
+>
 
 🚀 Data Science & AI Enthusiast
 
@@ -151,22 +182,29 @@ mb-6
 
 
 
-<h1 className="
-text-5xl
+
+<h1
+className="
+text-4xl
+sm:text-5xl
 md:text-7xl
 font-extrabold
 leading-tight
-">
+"
+>
 
 Mohamed
 
-<span className="
+<span
+className="
 text-yellow-400
-">
+"
+>
 
  Abdelhay
 
 </span>
+
 
 </h1>
 
@@ -174,12 +212,15 @@ text-yellow-400
 
 
 
-<h2 className="
-text-3xl
+<h2
+className="
+text-2xl
+sm:text-3xl
 md:text-4xl
 mt-5
 font-semibold
-">
+"
+>
 
 <TypingText />
 
@@ -191,15 +232,18 @@ font-semibold
 
 
 
-<p className="
+<p
+className="
 mt-7
-text-lg
+text-base
+sm:text-lg
 text-slate-300
 leading-relaxed
 max-w-xl
-">
+"
+>
 
-I build intelligent solutions using 
+I build intelligent solutions using
 Machine Learning, Artificial Intelligence,
 and Data Analytics.
 
@@ -212,12 +256,18 @@ through predictive models and interactive dashboards.
 
 
 
-<div className="
+
+
+<div
+className="
 flex
-gap-5
+flex-col
+sm:flex-row
+gap-4
 mt-8
-flex-wrap
-">
+"
+>
+
 
 
 <a
@@ -231,6 +281,7 @@ px-8
 py-3
 rounded-xl
 font-bold
+text-center
 hover:scale-105
 transition
 "
@@ -258,6 +309,7 @@ px-8
 py-3
 rounded-xl
 font-bold
+text-center
 hover:bg-yellow-400
 hover:text-black
 transition
@@ -287,6 +339,7 @@ px-8
 py-3
 rounded-xl
 font-bold
+text-center
 hover:border-yellow-400
 transition
 "
@@ -307,21 +360,24 @@ LinkedIn
 
 
 
-
 {/* STATS */}
 
 
-<div className="
+<div
+className="
 grid
-grid-cols-3
+grid-cols-1
+sm:grid-cols-3
 gap-4
 mt-12
 max-w-lg
-">
+"
+>
 
 
 
-<div className="
+<div
+className="
 bg-white/5
 backdrop-blur-xl
 border
@@ -329,13 +385,16 @@ border-white/10
 rounded-2xl
 p-5
 text-center
-">
+"
+>
 
-<h3 className="
+<h3
+className="
 text-3xl
 font-bold
 text-yellow-400
-">
+"
+>
 
 6+
 
@@ -350,7 +409,10 @@ Projects
 
 
 
-<div className="
+
+
+<div
+className="
 bg-white/5
 backdrop-blur-xl
 border
@@ -358,13 +420,16 @@ border-white/10
 rounded-2xl
 p-5
 text-center
-">
+"
+>
 
-<h3 className="
+<h3
+className="
 text-3xl
 font-bold
 text-yellow-400
-">
+"
+>
 
 10+
 
@@ -380,7 +445,10 @@ Models
 
 
 
-<div className="
+
+
+<div
+className="
 bg-white/5
 backdrop-blur-xl
 border
@@ -388,27 +456,34 @@ border-white/10
 rounded-2xl
 p-5
 text-center
-">
+"
+>
 
-<h3 className="
+
+<h3
+className="
 text-xl
 font-bold
 text-yellow-400
-">
+"
+>
 
 Python
 
 </h3>
 
+
 <p className="text-sm text-slate-300">
 Main Stack
 </p>
 
-</div>
-
-
 
 </div>
+
+
+
+</div>
+
 
 
 
@@ -422,12 +497,11 @@ Main Stack
 
 
 
-
 {/* IMAGE */}
 
 
-<motion.div
 
+<motion.div
 
 initial={{
 opacity:0,
@@ -446,13 +520,18 @@ duration:1
 className="
 flex
 justify-center
+mt-10
+md:mt-0
 "
-
 
 >
 
 
-<div className="relative">
+<div
+className="
+relative
+"
+>
 
 
 
@@ -470,6 +549,8 @@ repeat:Infinity
 }}
 
 className="
+hidden
+sm:block
 absolute
 -top-8
 -left-8
@@ -494,6 +575,8 @@ text-yellow-400
 
 
 
+
+
 <motion.div
 
 animate={{
@@ -506,6 +589,8 @@ repeat:Infinity
 }}
 
 className="
+hidden
+sm:block
 absolute
 -bottom-8
 -right-8
@@ -530,14 +615,17 @@ text-yellow-400
 
 
 
-<div className="
+
+<div
+className="
 absolute
 inset-0
 bg-yellow-400
-blur-[80px]
+blur-[60px]
 opacity-20
 rounded-full
-"/>
+"
+/>
 
 
 
@@ -552,8 +640,12 @@ alt="Mohamed Abdelhay"
 
 className="
 relative
-w-80
-h-80
+w-60
+h-60
+sm:w-72
+sm:h-72
+md:w-80
+md:h-80
 object-cover
 rounded-full
 border-4
@@ -565,14 +657,10 @@ shadow-2xl
 
 
 
-
 </div>
 
 
-
 </motion.div>
-
-
 
 
 
@@ -581,6 +669,7 @@ shadow-2xl
 
 
 </section>
+
 
 
 
@@ -599,6 +688,7 @@ shadow-2xl
 <Contact />
 
 <Footer />
+
 
 
 
