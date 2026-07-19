@@ -1,306 +1,117 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaLinkedin, FaBars, FaTimes } from "react-icons/fa";
 
-
-export default function Navbar(){
-
-
-const [open,setOpen]=useState(false);
-
-
-
-return (
-
-<motion.nav
-
-initial={{
-y:-100
-}}
-
-animate={{
-y:0
-}}
-
-transition={{
-duration:0.6
-}}
-
-className="
-fixed
-top-0
-left-0
-w-full
-z-50
-backdrop-blur-xl
-bg-white/5
-border-b
-border-white/10
-"
-
-
->
-
-
-<div
-className="
-max-w-6xl
-mx-auto
-px-5
-sm:px-6
-py-3
-sm:py-4
-flex
-justify-between
-items-center
-"
->
-
-
-{/* Logo */}
-
-<h1
-className="
-text-xl
-sm:text-2xl
-font-bold
-text-yellow-400
-"
->
-
-Mohamed.AI
-
-</h1>
-
-
-
-
-
-
-{/* Desktop Links */}
-
-<div
-className="
-hidden
-md:flex
-gap-8
-text-slate-300
-"
->
-
-
-<a href="#about" className="hover:text-yellow-400 transition">
-About
-</a>
-
-
-<a href="#skills" className="hover:text-yellow-400 transition">
-Skills
-</a>
-
-
-<a href="#projects" className="hover:text-yellow-400 transition">
-Projects
-</a>
-
-
-<a href="#contact" className="hover:text-yellow-400 transition">
-Contact
-</a>
-
-
-
-</div>
-
-
-
-
-
-
-
-{/* Desktop Social */}
-
-<div
-className="
-hidden
-sm:flex
-gap-4
-"
->
-
-
-<a
-href="https://github.com/abdelhaym953-create"
-target="_blank"
->
-
-<FaGithub
-size={20}
-className="hover:text-yellow-400 transition"
-/>
-
-</a>
-
-
-
-
-<a
-href="https://www.linkedin.com/in/mohamed-abdelhay-3361a2308"
-target="_blank"
->
-
-<FaLinkedin
-size={20}
-className="hover:text-yellow-400 transition"
-/>
-
-</a>
-
-
-</div>
-
-
-
-
-
-
-
-{/* Mobile Button */}
-
-<button
-
-className="
-md:hidden
-text-yellow-400
-text-xl
-"
-
-onClick={()=>setOpen(!open)}
-
->
-
-
-{
-open ?
-
-<FaTimes/>
-
-:
-
-<FaBars/>
-
-}
-
-
-</button>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-{/* Mobile Menu */}
-
-{
-
-open &&
-
-<motion.div
-
-initial={{
-opacity:0,
-height:0
-}}
-
-animate={{
-opacity:1,
-height:"auto"
-}}
-
-className="
-md:hidden
-bg-black/40
-backdrop-blur-xl
-border-t
-border-white/10
-px-6
-py-5
-"
-
-
->
-
-
-<div
-className="
-flex
-flex-col
-gap-5
-text-slate-300
-"
->
-
-
-<a 
-href="#about"
-onClick={()=>setOpen(false)}
-className="hover:text-yellow-400"
->
-About
-</a>
-
-
-<a 
-href="#skills"
-onClick={()=>setOpen(false)}
-className="hover:text-yellow-400"
->
-Skills
-</a>
-
-
-<a 
-href="#projects"
-onClick={()=>setOpen(false)}
-className="hover:text-yellow-400"
->
-Projects
-</a>
-
-
-<a 
-href="#contact"
-onClick={()=>setOpen(false)}
-className="hover:text-yellow-400"
->
-Contact
-</a>
-
-
-
-</div>
-
-
-
-</motion.div>
-
-
-}
-
-
-
-</motion.nav>
-
-
-);
-
-
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  const menuVariants = {
+    closed: { opacity: 0, height: 0, transition: { duration: 0.3, ease: "easeInOut" } },
+    open: { opacity: 1, height: "auto", transition: { duration: 0.3, ease: "easeInOut" } }
+  };
+
+  const navLinks = [
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
+  ];
+
+  return (
+    <motion.nav
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-zinc-950/70 border-b border-white/10"
+    >
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex justify-between items-center">
+        {/* Logo */}
+        <motion.h1 
+          whileHover={{ scale: 1.05 }}
+          className="text-xl sm:text-2xl font-black tracking-wide text-yellow-400 cursor-pointer"
+        >
+          Mohamed.AI
+        </motion.h1>
+
+        {/* Desktop Links */}
+        <div className="hidden md:flex gap-8 text-sm font-medium text-slate-300">
+          {navLinks.map((link) => (
+            <a 
+              key={link.name} 
+              href={link.href} 
+              className="hover:text-yellow-400 transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-400 after:left-0 after:-bottom-1 hover:after:w-full after:transition-all after:duration-300"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+
+        {/* Desktop Social */}
+        <div className="hidden sm:flex gap-4 text-slate-300">
+          <motion.a 
+            whileHover={{ scale: 1.2, y: -2 }} 
+            href="https://github.com/abdelhaym953-create" 
+            target="_blank"
+            className="hover:text-yellow-400 transition-colors"
+          >
+            <FaGithub size={22} />
+          </motion.a>
+          <motion.a 
+            whileHover={{ scale: 1.2, y: -2 }} 
+            href="https://www.linkedin.com/in/mohamed-abdelhay-3361a2308" 
+            target="_blank"
+            className="hover:text-yellow-400 transition-colors"
+          >
+            <FaLinkedin size={22} />
+          </motion.a>
+        </div>
+
+        {/* Mobile Button */}
+        <button
+          className="md:hidden text-yellow-400 text-2xl focus:outline-none"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
+
+      {/* Mobile Menu with smooth AnimatePresence */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            variants={menuVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            className="md:hidden bg-zinc-950/95 backdrop-blur-2xl border-t border-white/5 px-6 py-6 overflow-hidden"
+          >
+            <div className="flex flex-col gap-5 text-slate-300 font-medium">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="hover:text-yellow-400 py-1 transition-colors border-b border-white/5"
+                >
+                  {link.name}
+                </a>
+              ))}
+              
+              {/* Social links inside mobile menu */}
+              <div className="flex gap-6 pt-4 text-slate-400 border-t border-white/5 justify-center">
+                <a href="https://github.com/abdelhaym953-create" target="_blank" className="hover:text-yellow-400">
+                  <FaGithub size={24} />
+                </a>
+                <a href="https://www.linkedin.com/in/mohamed-abdelhay-3361a2308" target="_blank" className="hover:text-yellow-400">
+                  <FaLinkedin size={24} />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
+  );
 }
