@@ -45,8 +45,8 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 md:py-28 px-4 sm:px-6 bg-zinc-950 text-white relative border-t border-white/5">
-      <div className="max-w-6xl mx-auto">
+    <section id="experience" className="py-20 md:py-28 px-4 sm:px-6 bg-zinc-950 text-white relative border-t border-white/5 overflow-hidden">
+      <div className="max-w-6xl mx-auto relative z-10">
 
         {/* Section Heading */}
         <motion.div
@@ -59,7 +59,7 @@ export default function Experience() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">
             My <span className="text-yellow-400">Journey</span>
           </h2>
-          <p className="text-slate-400 mt-4 max-w-2xl mx-auto text-base sm:text-lg">
+          <p className="text-slate-400 mt-4 max-w-2xl mx-auto text-base sm:text-lg px-2">
             A timeline of my academic background, technical evolution, and engineering milestone steps.
           </p>
         </motion.div>
@@ -69,26 +69,24 @@ export default function Experience() {
           {experiences.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{
-                opacity: 0,
-                x: index % 2 === 0 ? -40 : 40
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0
-              }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              viewport={{ once: true }}
-              className="bg-zinc-900/30 backdrop-blur-xl border border-white/5 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-4 sm:gap-6 hover:border-yellow-400/20 transition-colors duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              viewport={{ once: true, margin: "-50px" }}
+              whileHover={{ y: -2 }}
+              className="group bg-zinc-900/30 backdrop-blur-xl border border-white/5 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-4 sm:gap-6 hover:border-yellow-400/30 transition-all duration-300 relative"
             >
+              {/* Glow Effect on Hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
               {/* Icon Container */}
-              <div className="text-yellow-400 text-3xl sm:text-4xl shrink-0">
+              <div className="text-yellow-400 text-3xl sm:text-4xl shrink-0 transform group-hover:scale-105 transition-transform duration-300 w-fit">
                 {item.icon}
               </div>
 
               {/* Content Container */}
-              <div className="flex-1">
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-100">
+              <div className="flex-1 min-w-0">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-100 group-hover:text-yellow-400 transition-colors duration-300 break-words">
                   {item.title}
                 </h3>
                 

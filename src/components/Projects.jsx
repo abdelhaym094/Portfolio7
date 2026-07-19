@@ -20,7 +20,7 @@ const projects = [
     description: "End-to-end analytics platform that transforms raw sales data into business insights using data processing, visualization and intelligent analysis.",
     tech: ["Python", "Pandas", "SQL", "Plotly", "Machine Learning"],
     slug: "sales-intelligence-platform",
-    github: "#"
+    github: "#" // يمكنك استبداله برابط مستودع الـ GitHub الحقيقي لاحقاً
   },
   {
     title: "Mobile Sentiment Analysis",
@@ -74,6 +74,12 @@ const projects = [
 ];
 
 export default function Projects() {
+  // دالة للتحكم في الروابط غير المجهزة لمنع انهيار الصفحة أو حدوث صفحة بيضاء
+  const handleDisabledLink = (e, type) => {
+    e.preventDefault();
+    alert(`The ${type} page is currently under code preparation and will be live very soon!`);
+  };
+
   return (
     <section id="projects" className="py-20 md:py-28 px-4 sm:px-6 bg-zinc-950 text-white relative">
       <div className="max-w-7xl mx-auto">
@@ -109,9 +115,32 @@ export default function Projects() {
               {/* Soft Ambient Light Glowing */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-400/10 blur-3xl rounded-full transition-opacity group-hover:bg-yellow-400/20" />
 
-              {/* Icon */}
-              <div className="text-yellow-400 text-3xl sm:text-4xl mb-4 self-start">
-                {project.icon}
+              {/* Top Row: Icon & GitHub Shortcut */}
+              <div className="flex justify-between items-start mb-4 w-full">
+                <div className="text-yellow-400 text-3xl sm:text-4xl">
+                  {project.icon}
+                </div>
+                
+                {/* زر جيت هاب مخصص لكل بطاقة مشروع */}
+                {project.github === "#" ? (
+                  <button
+                    onClick={(e) => handleDisabledLink(e, "GitHub Repository")}
+                    className="text-slate-400 hover:text-yellow-400 text-xl p-1.5 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 transition-colors"
+                    title="View Source Code"
+                  >
+                    <FaGithub />
+                  </button>
+                ) : (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-400 hover:text-yellow-400 text-xl p-1.5 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 transition-colors"
+                    title="View Source Code"
+                  >
+                    <FaGithub />
+                  </a>
+                )}
               </div>
 
               {/* Type Badge */}
@@ -143,8 +172,13 @@ export default function Projects() {
 
               {/* Action Buttons */}
               <div className="flex gap-3 mt-6 pt-4 border-t border-white/5">
+                {/* زر التفاصيل مع فحص ذكي قبل التحويل لمنع مشاكل النقل */}
                 <a
                   href={`/projects/${project.slug}`}
+                  onClick={(e) => {
+                    // إذا لم تكن المسارات الديناميكية جاهزة بعد، يمكنك تفعيل هذا السطر لمنع الشاشة البيضاء:
+                    // handleDisabledLink(e, "Project Details");
+                  }}
                   className="flex-1 text-center bg-zinc-800 text-slate-200 hover:bg-zinc-700 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-colors"
                 >
                   Details

@@ -6,7 +6,7 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="bg-zinc-950 text-white border-t border-white/5 py-12 px-4 sm:px-6 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
         
         {/* Brand Container */}
         <motion.div
@@ -27,18 +27,19 @@ export default function Footer() {
         {/* Social Links */}
         <div className="flex gap-4">
           {[
-            { icon: <FaGithub />, url: "https://github.com/abdelhaym953-create" },
-            { icon: <FaLinkedin />, url: "https://www.linkedin.com/in/mohamed-abdelhay-3361a2308" },
-            { icon: <FaEnvelope />, url: "mailto:abdelhaym953@gmail.com" },
+            { icon: <FaGithub />, url: "https://github.com/abdelhaym953-create", label: "GitHub" },
+            { icon: <FaLinkedin />, url: "https://www.linkedin.com/in/mohamed-abdelhay-3361a2308", label: "LinkedIn" },
+            { icon: <FaEnvelope />, url: "mailto:abdelhaym953@gmail.com", label: "Email" },
           ].map((link, idx) => (
             <motion.a
               key={idx}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, translateY: -2 }}
+              aria-label={link.label}
+              whileHover={{ scale: 1.08, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="w-11 h-11 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-lg text-slate-400 hover:text-yellow-400 hover:border-yellow-400/40 transition-colors duration-300"
+              className="w-11 h-11 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-lg text-slate-400 hover:text-yellow-400 hover:border-yellow-400/30 transition-colors duration-300"
             >
               {link.icon}
             </motion.a>
@@ -48,9 +49,9 @@ export default function Footer() {
       </div>
 
       {/* Bottom Rights */}
-      <div className="max-w-6xl mx-auto text-center mt-10 pt-6 border-t border-white/5 text-slate-500 text-xs sm:text-sm flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div className="max-w-6xl mx-auto text-center mt-10 pt-6 border-t border-white/5 text-slate-500 text-xs sm:text-sm flex flex-col sm:flex-row justify-between items-center gap-3 relative z-10">
         <p>© 2026 Mohamed Abdelhay. All Rights Reserved.</p>
-        <p className="flex items-center gap-1.5">
+        <p className="flex items-center gap-1.5 justify-center">
           Built with <FaHeart className="text-red-500 animate-pulse text-xs" /> using Next.js & Tailwind
         </p>
       </div>

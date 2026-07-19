@@ -7,6 +7,9 @@ export default function TypingText() {
   const el = useRef(null);
 
   useEffect(() => {
+    // التأكد من أن العنصر موجود فعلياً في الـ DOM قبل البدء
+    if (!el.current) return;
+
     const typed = new Typed(el.current, {
       strings: [
         "Data Scientist",
@@ -16,10 +19,11 @@ export default function TypingText() {
       ],
       typeSpeed: 60,       // سرعة كتابة متزنة ومريحة للعين
       backSpeed: 40,       // سرعة مسح رشيقة
-      backDelay: 1200,     // وقت انتظار (ثانية وربع) بعد اكتمال الجملة ليقرأها المستخدم
+      backDelay: 1500,     // زيادة بسيطة لوقت الانتظار ليتمكن مستخدم الهاتف من قراءة المسميات الطويلة
       startDelay: 300,     // تأخير بسيط جداً قبل بدء الكتابة لأول مرة
       loop: true,
       cursorChar: "|",     // شكل مؤشر الكتابة التقليدي
+      autoInsertCss: true, // يضمن حقن التنسيقات الخاصة بالمؤشر والوميض تلقائياً لمنع أي أخطاء تكرار
     });
 
     return () => {
@@ -28,10 +32,12 @@ export default function TypingText() {
   }, []);
 
   return (
-    <span
-      ref={el}
-      className="text-yellow-400 inline-block font-semibold"
-      style={{ minHeight: "1.5em" }} // يضمن حجز مساحة رأسية ثابتة تمنع اهتزاز العناصر المحيطة
-    />
+    <span className="inline-flex items-center">
+      <span
+        ref={el}
+        className="text-yellow-400 font-semibold select-none"
+        style={{ minHeight: "1.5em" }} // يضمن حجز مساحة رأسية ثابتة تمنع اهتزاز العناصر المحيطة (Layout Shift)
+      />
+    </span>
   );
 }

@@ -1,82 +1,53 @@
 "use client";
 
-import { useCallback } from "react";
-import Particles from "react-particles";
-import { loadSlim } from "tsparticles-slim";
+import { useEffect, useRef } from "react";
 
 export default function ParticlesBackground() {
-  const particlesInit = useCallback(async (engine) => {
-    await loadSlim(engine);
+  const glowRef = useRef(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (!glowRef.current) return;
+      const { clientX, clientY } = e;
+      // تحديث مكان الإضاءة مع حركة الماوس بدقة
+      glowRef.current.style.setProperty("--mouse-x", `${clientX}px`);
+      glowRef.current.style.setProperty("--mouse-y", `${clientY}px`);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 pointer-events-none select-none overflow-hidden">
-      {/* طبقة التدرج اللوني المتحرك ببطء في الخلفية */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-zinc-950 via-zinc-900 to-zinc-950 via-yellow-950/10 animate-gradient-glow" />
+    <div className="fixed inset-0 -z-10 pointer-events-none select-none bg-zinc-950 overflow-hidden">
       
-      {/* شبكة جزيئات الطاقة المضيئة */}
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        options={{
-          fpsLimit: 60,
-          background: {
-            color: "transparent",
-          },
-          particles: {
-            number: {
-              value: 60, // كثافة متزنة وممتازة للأداء
-              density: {
-                enable: true,
-                area: 800,
-              },
-            },
-            color: {
-              value: "#facc15",
-            },
-            links: {
-              enable: true,
-              distance: 150,
-              color: "#facc15",
-              opacity: 0.18, // توهج خفيف وغير مزعج للعين أثناء القراءة
-              width: 1,
-            },
-            move: {
-              enable: true,
-              speed: 1.2, // حركة هادئة وانسيابية
-              direction: "none",
-              random: true,
-              straight: false,
-              outModes: {
-                default: "out",
-              },
-            },
-            size: {
-              value: { min: 1, max: 3.5 },
-            },
-            opacity: {
-              value: { min: 0.2, max: 0.5 },
-            },
-          },
-          interactivity: {
-            events: {
-              onHover: {
-                enable: true,
-                mode: "grab", // تأثير جذب الجزيئات عند مرور الماوس
-              },
-            },
-            modes: {
-              grab: {
-                distance: 180,
-                links: {
-                  opacity: 0.5,
-                },
-              },
-            },
-          },
-          detectRetina: true,
+      {/* 1. تأثير تدرج لوني خفيف وثابت في الزوايا لمنع السواد الحاد */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-zinc-950 via-zinc-900/50 to-zinc-950" />
+
+      {/* 2. شبكة المربعات التقنية (Tech Grid) - ظاهرة ومضمونة */}
+      <div 
+        className="absolute inset-0 opacity-[0.05]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px)
+          `,
+          backgroundSize: "50px 50px",
         }}
       />
+
+      {/* 3. إضاءة الماوس التفاعلية باللون الذهبي - تتحرك في الشاشات الكبيرة */}
+      <div
+        ref={glowRef}
+        className="hidden md:block absolute inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(250, 204, 21, 0.12), transparent 80%)`,
+        }}
+      />
+
+      {/* 4. إضاءة خافتة دائرية في المنتصف تعمل على الموبايل والكمبيوتر كجمالية إضافية */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(250,204,21,0.02),transparent_70%)] pointer-events-none" />
+      
     </div>
   );
 }

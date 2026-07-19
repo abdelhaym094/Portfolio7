@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 
-import ParticlesBackground from "@/components/ParticlesBackground";
 import Navbar from "@/components/Navbar";
 import TypingText from "@/components/TypingText";
 
@@ -16,10 +15,10 @@ import Achievements from "@/components/Achievements";
 
 export default function Home() {
   return (
-    <main className="min-h-screen text-white overflow-hidden relative bg-zinc-950 selection:bg-yellow-400 selection:text-black">
+    /* تم حذف bg-zinc-950 وتحويلها إلى bg-transparent لكي تظهر شبكة المربعات المضيئة من الخلف */
+    <main className="min-h-screen text-white overflow-hidden relative bg-transparent selection:bg-yellow-400 selection:text-black">
       
-      {/* شبكة الجزيئات المضيئة والخلفية اللمسية المتحركة */}
-      <ParticlesBackground />
+      {/* تم حذف <ParticlesBackground /> من هنا لمنع التكرار لأنها تعمل بذكاء من ملف layout.js خلف الموقع بالكامل */}
 
       {/* المؤثرات الضوئية الهادئة في الزوايا (Ambient Glow) */}
       <div className="absolute inset-0 pointer-events-none select-none">
@@ -112,19 +111,21 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="flex justify-center order-first md:order-last"
+              className="flex justify-center order-first md:order-last w-full"
             >
-              {/* تأثير طفو خفيف للصورة الشخصية للأعلى والأسفل ببطء */}
               <motion.div 
-                className="relative"
+                className="relative w-full max-w-[260px] sm:max-w-[300px] md:max-w-[360px] aspect-square"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               >
-                <div className="absolute inset-0 bg-yellow-400 blur-[80px] opacity-10 rounded-full" />
+                {/* الهالة المضيئة الخلفية */}
+                <div className="absolute inset-0 bg-yellow-400 blur-[60px] opacity-10 rounded-full pointer-events-none" />
+                
+                {/* الصورة المستجيبة */}
                 <img
                   src="/me.jpeg"
                   alt="Mohamed Abdelhay"
-                  className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full object-cover border-4 border-zinc-900 shadow-2xl ring-4 ring-yellow-400/40 select-none pointer-events-none"
+                  className="w-full h-full rounded-full object-cover border-4 border-zinc-900 shadow-2xl ring-4 ring-yellow-400/40 select-none pointer-events-none"
                 />
               </motion.div>
             </motion.div>

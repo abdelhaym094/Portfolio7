@@ -36,8 +36,8 @@ const contactItems = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 md:py-28 px-4 sm:px-6 bg-zinc-950 text-white relative">
-      <div className="max-w-6xl mx-auto">
+    <section id="contact" className="py-20 md:py-28 px-4 sm:px-6 bg-zinc-950 text-white relative overflow-hidden">
+      <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Section Heading */}
         <motion.div
@@ -50,38 +50,38 @@ export default function Contact() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">
             Let's Build Something <span className="text-yellow-400">Amazing</span>
           </h2>
-          <p className="text-slate-400 mt-4 max-w-2xl mx-auto text-base sm:text-lg">
+          <p className="text-slate-400 mt-4 max-w-2xl mx-auto text-base sm:text-lg px-2">
             Interested in data science, AI solutions, or intelligent dashboards? 
             Let's connect and transform your data into reality.
           </p>
         </motion.div>
 
         {/* Contact Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-14">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-14 md:mt-20">
           {contactItems.map((item, index) => {
             const cardContent = (
               <>
                 {/* Glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-b from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-b from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 
                 {/* Icon */}
-                <div className="text-yellow-400 text-3xl sm:text-4xl flex justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300 relative z-10">
+                <div className="text-yellow-400 text-2xl sm:text-4xl flex justify-center mb-3 sm:mb-4 transform group-hover:scale-105 transition-transform duration-300 relative z-10">
                   {item.icon}
                 </div>
 
                 {/* Title */}
-                <h3 className="font-bold text-xl text-slate-100 group-hover:text-yellow-400 transition-colors duration-300 relative z-10">
+                <h3 className="font-bold text-lg sm:text-xl text-slate-100 group-hover:text-yellow-400 transition-colors duration-300 relative z-10">
                   {item.title}
                 </h3>
 
                 {/* Value */}
-                <p className="text-slate-400 mt-2 text-sm break-all relative z-10 group-hover:text-slate-300 transition-colors duration-300">
+                <p className="text-slate-400 mt-1 sm:mt-2 text-xs sm:text-sm break-all relative z-10 group-hover:text-slate-300 transition-colors duration-300 px-1">
                   {item.value}
                 </p>
               </>
             );
 
-            const cardClasses = "group bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded-2xl p-6 text-center hover:border-yellow-400/40 transition-all duration-300 relative overflow-hidden block h-full select-none cursor-pointer";
+            const cardClasses = "group bg-zinc-900/30 backdrop-blur-xl border border-white/5 rounded-2xl p-4 sm:p-6 text-center hover:border-yellow-400/30 transition-colors duration-300 relative overflow-hidden flex flex-col items-center justify-center h-full select-none";
 
             return (
               <motion.div
@@ -91,17 +91,18 @@ export default function Contact() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ 
-                  scale: 1.04,
+                  scale: 1.02,
                   y: -4,
-                  boxShadow: "0 15px 30px -15px rgba(250, 204, 21, 0.15)"
+                  boxShadow: "0 15px 30px -15px rgba(250, 204, 21, 0.12)"
                 }}
+                className="h-full"
               >
                 {item.isLink ? (
-                  <a href={item.link} target="_blank" rel="noopener noreferrer" className={cardClasses}>
+                  <a href={item.link} target="_blank" rel="noopener noreferrer" className={`${cardClasses} cursor-pointer`}>
                     {cardContent}
                   </a>
                 ) : (
-                  <div className={cardClasses + " cursor-default"}>
+                  <div className={`${cardClasses} cursor-default`}>
                     {cardContent}
                   </div>
                 )}

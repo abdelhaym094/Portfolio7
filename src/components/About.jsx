@@ -39,7 +39,7 @@ export default function About() {
             About <span className="text-yellow-400">Me</span>
           </h2>
           
-          <p className="text-slate-400 mt-6 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed font-normal">
+          <p className="text-slate-400 mt-6 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed font-normal px-2">
             I am <span className="text-yellow-400 font-medium">Mohamed Abdelhay</span>, a Data Scientist and Engineer passionate about 
             bridging the gap between raw data and intelligent execution. My background enables me to apply 
             analytical thinking and AI to solve complex, real-world problems.
@@ -56,29 +56,31 @@ export default function About() {
               transition={{ duration: 0.5, delay: index * 0.15 }}
               viewport={{ once: true }}
               whileHover={{ 
-                scale: 1.03, 
+                scale: 1.02, 
                 y: -5,
-                boxShadow: "0 10px 30px -15px rgba(250, 204, 21, 0.2)"
+                boxShadow: "0 20px 40px -15px rgba(250, 204, 21, 0.12)"
               }}
-              className="group bg-zinc-900/50 backdrop-blur-xl border border-white/5 rounded-2xl p-6 sm:p-8 hover:border-yellow-400/50 transition-all duration-300 relative overflow-hidden"
+              className="group bg-zinc-900/30 backdrop-blur-xl border border-white/5 rounded-2xl p-6 sm:p-8 hover:border-yellow-400/30 transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
             >
               {/* تأثير إضاءة خلفي خفيف يظهر عند الحوم بالماوس */}
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               
-              {/* Icon */}
-              <div className="text-yellow-400 text-3xl sm:text-4xl mb-5 transform group-hover:scale-110 transition-transform duration-300 relative z-10">
-                {card.icon}
+              <div>
+                {/* Icon */}
+                <div className="text-yellow-400 text-3xl sm:text-4xl mb-5 transform group-hover:scale-105 transition-transform duration-300 relative z-10 w-fit">
+                  {card.icon}
+                </div>
+
+                {/* Title */}
+                <h3 className="text-xl font-bold mb-3 text-slate-100 group-hover:text-yellow-400 transition-colors duration-300 relative z-10 break-words">
+                  {card.title}
+                </h3>
+
+                {/* Text */}
+                <p className="text-sm sm:text-base text-slate-400 leading-relaxed relative z-10 group-hover:text-slate-300 transition-colors duration-300">
+                  {card.text}
+                </p>
               </div>
-
-              {/* Title */}
-              <h3 className="text-xl font-bold mb-3 text-slate-100 group-hover:text-yellow-400 transition-colors duration-300 relative z-10">
-                {card.title}
-              </h3>
-
-              {/* Text */}
-              <p className="text-sm sm:text-base text-slate-400 leading-relaxed relative z-10 group-hover:text-slate-300 transition-colors duration-300">
-                {card.text}
-              </p>
             </motion.div>
           ))}
         </div>

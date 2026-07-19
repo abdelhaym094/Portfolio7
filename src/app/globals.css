@@ -1,17 +1,16 @@
 @import "tailwindcss";
 
-@layer utilities {
-  /* أنيميشن تحريك درجات الألوان في الخلفية بسلاسة */
-  @keyframes gradient-bg {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+/* تعريف الأنيميشن باستخدام Pure CSS Keyframes (متوافق مع v4) */
+@keyframes gradient-bg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-  .animate-gradient-glow {
-    background-size: 200% 200%;
-    animation: gradient-bg 15s ease infinite;
-  }
+/* تسجيل الأداة المساعدة بالطريقة الرسمية لـ Tailwind CSS v4 */
+@utility animate-gradient-glow {
+  background-size: 200% 200%;
+  animation: gradient-bg 15s ease infinite;
 }
 
 /* تظبيط مؤشر الكتابة التفاعلي الخاص بـ Typed.js ليطابق الهوية البصرية */
