@@ -62,8 +62,10 @@ return (
 <section
 id="skills"
 className="
-py-24
-px-6
+py-16
+md:py-24
+px-4
+sm:px-6
 "
 >
 
@@ -91,11 +93,13 @@ once:true
 }}
 
 className="
-text-4xl
+text-3xl
+sm:text-4xl
 md:text-5xl
 font-bold
 text-center
-mb-16
+mb-10
+md:mb-16
 "
 
 >
@@ -113,11 +117,17 @@ Technical
 
 
 
+
+
 <div className="
 grid
-md:grid-cols-3
-gap-8
+grid-cols-1
+sm:grid-cols-2
+lg:grid-cols-3
+gap-5
+md:gap-8
 ">
+
 
 
 {
@@ -133,7 +143,7 @@ key={skill.name}
 
 initial={{
 opacity:0,
-y:50
+y:40
 }}
 
 whileInView={{
@@ -150,9 +160,8 @@ once:true
 }}
 
 
-
 whileHover={{
-scale:1.05
+scale:1.03
 }}
 
 
@@ -163,7 +172,8 @@ backdrop-blur-xl
 border
 border-white/10
 rounded-3xl
-p-8
+p-5
+sm:p-7
 text-center
 hover:border-yellow-400
 transition
@@ -172,12 +182,14 @@ transition
 >
 
 
+
 <div className="
 text-yellow-400
-text-5xl
+text-4xl
+sm:text-5xl
 flex
 justify-center
-mb-5
+mb-4
 ">
 
 {skill.icon}
@@ -187,8 +199,11 @@ mb-5
 
 
 
+
+
 <h3 className="
-text-2xl
+text-xl
+sm:text-2xl
 font-bold
 ">
 
@@ -198,8 +213,13 @@ font-bold
 
 
 
+
+
+
 <p className="
-mt-3
+mt-2
+text-sm
+sm:text-base
 text-slate-300
 ">
 
@@ -209,8 +229,11 @@ text-slate-300
 
 
 
+
+
+
 <div className="
-mt-5
+mt-4
 h-2
 bg-white/10
 rounded-full

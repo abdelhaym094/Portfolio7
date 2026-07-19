@@ -7,242 +7,296 @@ import { FaGraduationCap, FaBrain, FaChartLine } from "react-icons/fa";
 export default function About() {
 
 
-  const cards = [
+const cards = [
 
-    {
-      icon: <FaBrain />,
-      title: "AI & Machine Learning",
-      text: "Building predictive models and intelligent solutions using modern ML techniques."
-    },
+{
+icon:<FaBrain />,
+title:"AI & Machine Learning",
+text:"Building predictive models and intelligent solutions using modern ML techniques."
+},
 
 
-    {
-      icon: <FaChartLine />,
-      title: "Data Analytics",
-      text: "Transforming raw data into meaningful insights through visualization and storytelling."
-    },
+{
+icon:<FaChartLine />,
+title:"Data Analytics",
+text:"Transforming raw data into meaningful insights through visualization and storytelling."
+},
 
 
-    {
-      icon: <FaGraduationCap />,
-      title: "Engineering Background",
-      text: "Agricultural Engineering student specialized in Solar Energy and smart solutions."
-    }
+{
+icon:<FaGraduationCap />,
+title:"Engineering Background",
+text:"Agricultural Engineering student specialized in Solar Energy and smart solutions."
+}
 
-  ];
+];
 
 
 
-  return (
 
-    <section
-      id="about"
-      className="
-      py-24
-      px-6
-      "
-    >
+return (
 
+<section
+id="about"
+className="
+py-16
+md:py-24
+px-4
+sm:px-6
+"
+>
 
 
-      <div className="
-      max-w-6xl
-      mx-auto
-      ">
 
+<div className="
+max-w-6xl
+mx-auto
+">
 
 
-        {/* Title */}
 
 
-        <motion.div
 
-          initial={{
-            opacity:0,
-            y:50
-          }}
+{/* Title */}
 
-          whileInView={{
-            opacity:1,
-            y:0
-          }}
 
-          transition={{
-            duration:0.8
-          }}
+<motion.div
 
-          viewport={{
-            once:true
-          }}
+initial={{
+opacity:0,
+y:40
+}}
 
-        >
+whileInView={{
+opacity:1,
+y:0
+}}
 
+transition={{
+duration:0.8
+}}
 
-          <h2 className="
-          text-4xl
-          md:text-5xl
-          font-bold
-          text-center
-          ">
+viewport={{
+once:true
+}}
 
-            About <span className="text-yellow-400">
-              Me
-            </span>
+>
 
 
-          </h2>
+<h2 className="
+text-3xl
+sm:text-4xl
+md:text-5xl
+font-bold
+text-center
+">
 
+About
 
+<span className="text-yellow-400">
+ Me
+</span>
 
 
-          <p className="
-          text-center
-          text-slate-300
-          mt-6
-          max-w-3xl
-          mx-auto
-          text-lg
-          leading-relaxed
-          ">
+</h2>
 
 
-            I am Mohamed Abdelhay, a Data Scientist passionate about
-            transforming data into intelligent decisions.
-            My journey combines engineering thinking with Artificial
-            Intelligence to build practical solutions.
 
 
 
-          </p>
 
+<p className="
+text-center
+text-slate-300
+mt-5
+max-w-3xl
+mx-auto
+text-sm
+sm:text-base
+md:text-lg
+leading-relaxed
+">
 
 
-        </motion.div>
+I am Mohamed Abdelhay, a Data Scientist passionate about
+transforming data into intelligent decisions.
+My journey combines engineering thinking with Artificial
+Intelligence to build practical solutions.
 
 
+</p>
 
 
 
+</motion.div>
 
 
-        {/* Cards */}
 
 
 
-        <div className="
-        grid
-        md:grid-cols-3
-        gap-8
-        mt-16
-        ">
 
 
 
-          {cards.map((card,index)=>(
 
+{/* Cards */}
 
-            <motion.div
 
 
-              key={index}
+<div className="
 
+grid
 
-              initial={{
-                opacity:0,
-                y:60
-              }}
+grid-cols-1
 
+sm:grid-cols-2
 
-              whileInView={{
-                opacity:1,
-                y:0
-              }}
+lg:grid-cols-3
 
+gap-5
 
-              transition={{
-                duration:0.5,
-                delay:index*0.2
-              }}
+md:gap-8
 
+mt-10
 
-              viewport={{
-                once:true
-              }}
+md:mt-16
 
+">
 
 
-              className="
-              bg-white/5
-              backdrop-blur-lg
-              border
-              border-white/10
-              rounded-3xl
-              p-8
-              hover:border-yellow-400
-              transition
-              "
 
 
-            >
 
+{
 
+cards.map((card,index)=>(
 
-              <div className="
-              text-yellow-400
-              text-4xl
-              mb-5
-              ">
 
-                {card.icon}
+<motion.div
 
-              </div>
 
+key={index}
 
 
+initial={{
+opacity:0,
+y:40
+}}
 
-              <h3 className="
-              text-2xl
-              font-bold
-              mb-4
-              ">
 
-                {card.title}
+whileInView={{
+opacity:1,
+y:0
+}}
 
-              </h3>
 
+transition={{
+duration:0.5,
+delay:index*0.15
+}}
 
 
-              <p className="
-              text-slate-300
-              leading-relaxed
-              ">
+viewport={{
+once:true
+}}
 
-                {card.text}
 
-              </p>
 
+whileHover={{
+scale:1.03
+}}
 
 
-            </motion.div>
 
 
+className="
+bg-white/5
+backdrop-blur-lg
+border
+border-white/10
+rounded-3xl
+p-5
+sm:p-7
+hover:border-yellow-400
+transition
+"
 
-          ))}
+>
 
 
 
-        </div>
+<div className="
+text-yellow-400
+text-3xl
+sm:text-4xl
+mb-4
+">
 
+{card.icon}
 
+</div>
 
 
 
-      </div>
 
 
-    </section>
 
+<h3 className="
+text-xl
+sm:text-2xl
+font-bold
+mb-3
+">
 
-  );
+{card.title}
+
+</h3>
+
+
+
+
+
+
+<p className="
+text-sm
+sm:text-base
+text-slate-300
+leading-relaxed
+">
+
+{card.text}
+
+</p>
+
+
+
+
+
+</motion.div>
+
+
+))
+
+
+}
+
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+);
+
 
 }

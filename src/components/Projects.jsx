@@ -17,7 +17,6 @@ export default function Projects(){
 
 const projects=[
 
-
 {
 title:"Sales Intelligence Platform",
 type:"Data Analytics",
@@ -39,7 +38,6 @@ slug:"sales-intelligence-platform",
 github:"#"
 
 },
-
 
 
 
@@ -90,7 +88,6 @@ demo:
 github:"#"
 
 },
-
 
 
 
@@ -151,7 +148,6 @@ github:"#"
 
 
 
-
 {
 title:"Hotel Booking Intelligence Dashboard",
 type:"Data Analytics",
@@ -176,8 +172,8 @@ github:"#"
 
 }
 
-
 ];
+
 
 
 
@@ -187,20 +183,29 @@ github:"#"
 return (
 
 <section
+
 id="projects"
+
 className="
-py-24
-px-6
+py-16
+md:py-24
+px-4
+sm:px-6
+
 "
+
 >
 
 
 <div
+
 className="
 max-w-7xl
 mx-auto
 "
+
 >
+
 
 
 
@@ -221,7 +226,8 @@ once:true
 }}
 
 className="
-text-4xl
+text-3xl
+sm:text-4xl
 md:text-5xl
 font-bold
 text-center
@@ -235,7 +241,6 @@ Featured
  Projects
 </span>
 
-
 </motion.h2>
 
 
@@ -243,13 +248,21 @@ Featured
 
 
 
+
 <div
+
 className="
 grid
-md:grid-cols-3
-gap-8
-mt-16
+grid-cols-1
+sm:grid-cols-2
+lg:grid-cols-3
+gap-5
+md:gap-8
+mt-10
+md:mt-16
+
 "
+
 >
 
 
@@ -267,7 +280,7 @@ key={project.title}
 
 initial={{
 opacity:0,
-y:60
+y:40
 }}
 
 
@@ -278,7 +291,7 @@ y:0
 
 
 transition={{
-delay:index*0.12
+delay:index*0.1
 }}
 
 
@@ -287,27 +300,52 @@ once:true
 }}
 
 
+
 whileHover={{
-scale:1.03
+
+scale:
+typeof window !== "undefined" && window.innerWidth > 768
+?
+1.03
+:
+1
+
 }}
 
 
 
 className="
+
 relative
+
 bg-white/5
-backdrop-blur-xl
+
+backdrop-blur-lg
+
 border
+
 border-white/10
+
 rounded-3xl
-p-8
-overflow-hidden
+
+p-5
+
+sm:p-6
+
+flex
+
+flex-col
+
 hover:border-yellow-400
+
 transition
+
+overflow-hidden
+
 "
 
-
 >
+
 
 
 
@@ -317,10 +355,9 @@ className="
 absolute
 top-0
 right-0
-w-32
-h-32
-bg-yellow-400
-opacity-10
+w-24
+h-24
+bg-yellow-400/20
 blur-3xl
 rounded-full
 "
@@ -331,12 +368,14 @@ rounded-full
 
 
 
+
+
 <div
 
 className="
 text-yellow-400
-text-5xl
-mb-6
+text-4xl
+mb-4
 "
 
 >
@@ -351,11 +390,13 @@ mb-6
 
 
 
+
 <span
 
 className="
 text-yellow-400
-text-sm
+text-xs
+sm:text-sm
 font-semibold
 "
 
@@ -370,12 +411,15 @@ font-semibold
 
 
 
+
 <h3
 
 className="
-text-2xl
+text-lg
+sm:text-xl
 font-bold
 mt-3
+break-words
 "
 
 >
@@ -394,8 +438,10 @@ mt-3
 
 className="
 text-slate-300
-mt-4
+text-sm
+mt-3
 leading-relaxed
+flex-grow
 "
 
 >
@@ -411,13 +457,15 @@ leading-relaxed
 
 
 
+
 <div
 
 className="
 flex
 flex-wrap
 gap-2
-mt-6
+mt-5
+
 "
 
 >
@@ -427,17 +475,27 @@ mt-6
 
 project.tech.map((tech)=>(
 
+
 <span
 
 key={tech}
 
 className="
-px-3
+
+px-2.5
+
 py-1
+
 rounded-full
+
 bg-yellow-400/10
+
 text-yellow-400
-text-sm
+
+text-xs
+
+sm:text-sm
+
 "
 
 >
@@ -449,10 +507,13 @@ text-sm
 
 ))
 
+
 }
 
 
+
 </div>
+
 
 
 
@@ -465,8 +526,10 @@ text-sm
 
 className="
 flex
-gap-4
-mt-8
+flex-col
+gap-3
+mt-6
+
 "
 
 >
@@ -477,15 +540,14 @@ mt-8
 href={`/projects/${project.slug}`}
 
 className="
-flex-1
+w-full
 text-center
 bg-yellow-400
 text-black
-py-3
+py-2.5
 rounded-xl
 font-bold
-hover:scale-105
-transition
+text-sm
 "
 
 >
@@ -498,11 +560,9 @@ View Details
 
 
 
-
-
 {
 
-project.demo && (
+project.demo &&
 
 <a
 
@@ -511,13 +571,14 @@ href={project.demo}
 target="_blank"
 
 className="
-flex-1
+w-full
 text-center
 border
 border-yellow-400
-py-3
+py-2.5
 rounded-xl
 font-bold
+text-sm
 hover:bg-yellow-400
 hover:text-black
 transition
@@ -529,11 +590,7 @@ Live App
 
 </a>
 
-)
-
 }
-
-
 
 
 

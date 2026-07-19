@@ -38,7 +38,7 @@ export default function ParticlesBackground() {
 
           number: {
 
-            value: 45,
+            value: 40,
 
             density: {
 
@@ -83,7 +83,7 @@ export default function ParticlesBackground() {
 
             enable:true,
 
-            speed:0.7,
+            speed:0.5,
 
             direction:"none",
 

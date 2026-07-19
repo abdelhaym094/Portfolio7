@@ -15,7 +15,7 @@ import Experience from "@/components/Experience";
 import Achievements from "@/components/Achievements";
 
 
-export default function Home() {
+export default function Home(){
 
 
 return (
@@ -26,11 +26,11 @@ min-h-screen
 text-white
 overflow-hidden
 relative
-"
->
+bg-[#020617]
+">
 
 
-{/* BACKGROUND */}
+{/* Background */}
 
 <div
 className="
@@ -38,53 +38,41 @@ absolute
 inset-0
 bg-gradient-to-br
 from-[#020617]
-via-[#0f172a]
+via-[#111827]
 to-black
-z-[-2]
 "
 />
 
 
 
-{/* GOLD LIGHT */}
-
 <div
 className="
 absolute
-top-20
-left-5
-sm:left-10
+top-10
+left-0
 w-72
-sm:w-96
 h-72
-sm:h-96
 bg-yellow-400/20
-blur-[100px]
-sm:blur-[140px]
+blur-[120px]
 rounded-full
 "
 />
 
 
-
-{/* BLUE LIGHT */}
 
 <div
 className="
 absolute
-bottom-10
-right-5
-sm:right-10
+bottom-0
+right-0
 w-72
-sm:w-96
 h-72
-sm:h-96
 bg-blue-500/20
-blur-[100px]
-sm:blur-[140px]
+blur-[120px]
 rounded-full
 "
 />
+
 
 
 
@@ -96,23 +84,21 @@ rounded-full
 className="
 relative
 z-10
-"
->
+">
 
 
 <Navbar />
 
 
 
-{/* HERO */}
+
 
 <section
 className="
 min-h-screen
 flex
 items-center
-px-4
-sm:px-6
+px-5
 pt-28
 pb-16
 "
@@ -121,14 +107,14 @@ pb-16
 
 <div
 className="
-max-w-7xl
+max-w-6xl
 mx-auto
 w-full
-grid
-grid-cols-1
+flex
+flex-col
+md:grid
 md:grid-cols-2
 gap-12
-md:gap-16
 items-center
 "
 >
@@ -137,21 +123,20 @@ items-center
 
 {/* TEXT */}
 
-
 <motion.div
 
 initial={{
 opacity:0,
-x:-80
+y:40
 }}
 
 animate={{
 opacity:1,
-x:0
+y:0
 }}
 
 transition={{
-duration:1
+duration:0.8
 }}
 
 >
@@ -164,14 +149,12 @@ inline-flex
 bg-yellow-400/10
 border
 border-yellow-400/30
-px-3
-sm:px-5
+px-4
 py-2
 rounded-full
 text-yellow-400
-mb-6
 text-sm
-sm:text-base
+mb-5
 "
 >
 
@@ -205,7 +188,6 @@ text-yellow-400
 
 </span>
 
-
 </h1>
 
 
@@ -216,13 +198,12 @@ text-yellow-400
 className="
 text-2xl
 sm:text-3xl
-md:text-4xl
 mt-5
 font-semibold
 "
 >
 
-<TypingText />
+<TypingText/>
 
 </h2>
 
@@ -231,23 +212,20 @@ font-semibold
 
 
 
-
 <p
 className="
-mt-7
-text-base
-sm:text-lg
+mt-6
 text-slate-300
 leading-relaxed
-max-w-xl
+text-base
+sm:text-lg
 "
 >
 
-I build intelligent solutions using
-Machine Learning, Artificial Intelligence,
-and Data Analytics.
+I build intelligent solutions using Machine Learning,
+Artificial Intelligence and Data Analytics.
 
-Transforming raw data into meaningful insights
+I transform raw data into meaningful insights
 through predictive models and interactive dashboards.
 
 </p>
@@ -261,89 +239,61 @@ through predictive models and interactive dashboards.
 <div
 className="
 flex
-flex-col
-sm:flex-row
-gap-4
-mt-8
+flex-wrap
+gap-3
+mt-7
 "
 >
 
 
-
 <a
-
 href="#projects"
-
 className="
 bg-yellow-400
 text-black
-px-8
+px-6
 py-3
 rounded-xl
 font-bold
-text-center
-hover:scale-105
-transition
 "
-
 >
 
-View Projects
+Projects
 
 </a>
 
 
 
-
-
 <a
-
 href="https://github.com/abdelhaym953-create"
-
 target="_blank"
-
 className="
 border
 border-yellow-400
-px-8
+px-6
 py-3
 rounded-xl
 font-bold
-text-center
-hover:bg-yellow-400
-hover:text-black
-transition
 "
-
 >
 
-GitHub
+Github
 
 </a>
 
 
 
-
-
-
 <a
-
 href="https://www.linkedin.com/in/mohamed-abdelhay-3361a2308"
-
 target="_blank"
-
 className="
 border
 border-white/20
-px-8
+px-6
 py-3
 rounded-xl
 font-bold
-text-center
-hover:border-yellow-400
-transition
 "
-
 >
 
 LinkedIn
@@ -360,37 +310,29 @@ LinkedIn
 
 
 
-{/* STATS */}
-
 
 <div
 className="
 grid
-grid-cols-1
-sm:grid-cols-3
-gap-4
-mt-12
-max-w-lg
+grid-cols-3
+gap-3
+mt-10
 "
 >
 
 
-
 <div
 className="
-bg-white/5
-backdrop-blur-xl
-border
-border-white/10
+glass
 rounded-2xl
-p-5
+p-4
 text-center
 "
 >
 
 <h3
 className="
-text-3xl
+text-2xl
 font-bold
 text-yellow-400
 "
@@ -400,7 +342,12 @@ text-yellow-400
 
 </h3>
 
-<p className="text-sm text-slate-300">
+<p
+className="
+text-xs
+text-slate-300
+"
+>
 Projects
 </p>
 
@@ -409,23 +356,18 @@ Projects
 
 
 
-
-
 <div
 className="
-bg-white/5
-backdrop-blur-xl
-border
-border-white/10
+glass
 rounded-2xl
-p-5
+p-4
 text-center
 "
 >
 
 <h3
 className="
-text-3xl
+text-2xl
 font-bold
 text-yellow-400
 "
@@ -435,7 +377,12 @@ text-yellow-400
 
 </h3>
 
-<p className="text-sm text-slate-300">
+<p
+className="
+text-xs
+text-slate-300
+"
+>
 Models
 </p>
 
@@ -444,25 +391,18 @@ Models
 
 
 
-
-
-
 <div
 className="
-bg-white/5
-backdrop-blur-xl
-border
-border-white/10
+glass
 rounded-2xl
-p-5
+p-4
 text-center
 "
 >
 
-
 <h3
 className="
-text-xl
+text-lg
 font-bold
 text-yellow-400
 "
@@ -472,20 +412,20 @@ Python
 
 </h3>
 
-
-<p className="text-sm text-slate-300">
-Main Stack
+<p
+className="
+text-xs
+text-slate-300
+"
+>
+Stack
 </p>
 
-
 </div>
 
 
 
 </div>
-
-
-
 
 
 
@@ -497,15 +437,15 @@ Main Stack
 
 
 
+
+
 {/* IMAGE */}
-
-
 
 <motion.div
 
 initial={{
 opacity:0,
-scale:0.7
+scale:0.8
 }}
 
 animate={{
@@ -520,8 +460,8 @@ duration:1
 className="
 flex
 justify-center
-mt-10
-md:mt-0
+order-first
+md:order-last
 "
 
 >
@@ -534,101 +474,16 @@ relative
 >
 
 
-
-
-
-<motion.div
-
-animate={{
-y:[0,-20,0]
-}}
-
-transition={{
-duration:3,
-repeat:Infinity
-}}
-
-className="
-hidden
-sm:block
-absolute
--top-8
--left-8
-bg-white/10
-backdrop-blur-xl
-border
-border-white/20
-px-5
-py-3
-rounded-xl
-text-yellow-400
-"
-
->
-
-🐍 Python
-
-</motion.div>
-
-
-
-
-
-
-
-
-<motion.div
-
-animate={{
-y:[0,20,0]
-}}
-
-transition={{
-duration:3,
-repeat:Infinity
-}}
-
-className="
-hidden
-sm:block
-absolute
--bottom-8
--right-8
-bg-white/10
-backdrop-blur-xl
-border
-border-white/20
-px-5
-py-3
-rounded-xl
-text-yellow-400
-"
-
->
-
-🤖 Machine Learning
-
-</motion.div>
-
-
-
-
-
-
-
 <div
 className="
 absolute
 inset-0
 bg-yellow-400
-blur-[60px]
+blur-[70px]
 opacity-20
 rounded-full
 "
 />
-
-
-
 
 
 
@@ -640,14 +495,14 @@ alt="Mohamed Abdelhay"
 
 className="
 relative
-w-60
-h-60
+w-56
+h-56
 sm:w-72
 sm:h-72
 md:w-80
 md:h-80
-object-cover
 rounded-full
+object-cover
 border-4
 border-yellow-400
 shadow-2xl
@@ -656,12 +511,11 @@ shadow-2xl
 />
 
 
-
 </div>
 
 
-</motion.div>
 
+</motion.div>
 
 
 
@@ -675,21 +529,19 @@ shadow-2xl
 
 
 
-<About />
+<About/>
 
-<Experience />
+<Experience/>
 
-<Achievements />
+<Achievements/>
 
-<Skills />
+<Skills/>
 
-<Projects />
+<Projects/>
 
-<Contact />
+<Contact/>
 
-<Footer />
-
-
+<Footer/>
 
 
 </div>
