@@ -1,16 +1,40 @@
 @import "tailwindcss";
 
-/* تعريف الأنيميشن باستخدام Pure CSS Keyframes (متوافق مع v4) */
+/* تعريف حركات الألوان السائلة المتداخلة لـ Tailwind v4 */
+@keyframes move-glow-1 {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(25vw, 15vh) scale(1.2) rotate(45deg); }
+  100% { transform: translate(-5vw, 25vh) scale(0.9) rotate(-45deg); }
+}
+
+@keyframes move-glow-2 {
+  0% { transform: translate(0px, 0px) scale(1.1); }
+  50% { transform: translate(-20vw, -15vh) scale(0.85) rotate(-90deg); }
+  100% { transform: translate(15vw, -5vh) scale(1.1) rotate(90deg); }
+}
+
+/* تسجيل الأدوات المساعدة الرسمية المتوافقة مع v4 */
+@utility animate-fluid-glow-1 {
+  animation: move-glow-1 25s infinite alternate ease-in-out;
+}
+
+@utility animate-fluid-glow-2 {
+  animation: move-glow-2 30s infinite alternate ease-in-out;
+}
+
+@utility animate-fluid-glow-3 {
+  animation: move-glow-1 20s infinite alternate-reverse ease-in-out;
+}
+
+@utility animate-gradient-glow {
+  background-size: 200% 200%;
+  animation: gradient-bg 15s ease infinite;
+}
+
 @keyframes gradient-bg {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
-}
-
-/* تسجيل الأداة المساعدة بالطريقة الرسمية لـ Tailwind CSS v4 */
-@utility animate-gradient-glow {
-  background-size: 200% 200%;
-  animation: gradient-bg 15s ease infinite;
 }
 
 /* تظبيط مؤشر الكتابة التفاعلي الخاص بـ Typed.js ليطابق الهوية البصرية */

@@ -9,7 +9,6 @@ export default function ParticlesBackground() {
     const handleMouseMove = (e) => {
       if (!glowRef.current) return;
       const { clientX, clientY } = e;
-      // تحديث مكان الإضاءة مع حركة الماوس بدقة
       glowRef.current.style.setProperty("--mouse-x", `${clientX}px`);
       glowRef.current.style.setProperty("--mouse-y", `${clientY}px`);
     };
@@ -21,32 +20,62 @@ export default function ParticlesBackground() {
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none select-none bg-zinc-950 overflow-hidden">
       
-      {/* 1. تأثير تدرج لوني خفيف وثابت في الزوايا لمنع السواد الحاد */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-zinc-950 via-zinc-900/50 to-zinc-950" />
+      {/* 
+        ============================================================
+        الألوان السائلة المتحركة (بدون فلاتر Blur أو ميكس بليند مسببة للمشاكل)
+        التوهج مدمج داخل الـ Gradient نفسه لضمان الرندرة والحركة 100%
+        ============================================================
+      */}
+      <div className="absolute inset-0 opacity-60">
+        
+        {/* كرة اللون الذهبي الدافئ - بتتحرك يمين وشمال وفوق وتحت */}
+        <div 
+          className="absolute w-[60vw] h-[60vw] top-[-10%] left-[-10%] animate-fluid-glow-1"
+          style={{
+            background: "radial-gradient(circle, rgba(245,158,11,0.15) 0%, rgba(245,158,11,0) 70%)"
+          }}
+        />
+        
+        {/* كرة اللون الرمادي/الزيتي التقني - بتتحرك عكس الاتجاه */}
+        <div 
+          className="absolute w-[70vw] h-[70vw] bottom-[-20%] right-[-10%] animate-fluid-glow-2"
+          style={{
+            background: "radial-gradient(circle, rgba(63,63,70,0.4) 0%, rgba(63,63,70,0) 70%)"
+          }}
+        />
 
-      {/* 2. شبكة المربعات التقنية (Tech Grid) - ظاهرة ومضمونة */}
+        {/* كرة ذهبية خافتة إضافية في المنتصف لضمان استمرار الحركة */}
+        <div 
+          className="absolute w-[50vw] h-[50vw] top-[20%] right-[10%] animate-fluid-glow-3"
+          style={{
+            background: "radial-gradient(circle, rgba(202,138,4,0.08) 0%, rgba(202,138,4,0) 70%)"
+          }}
+        />
+      </div>
+
+      {/* شبكة المربعات التقنية المتوافقة مع علوم البيانات */}
       <div 
-        className="absolute inset-0 opacity-[0.05]"
+        className="absolute inset-0 opacity-[0.03] md:opacity-[0.05]"
         style={{
           backgroundImage: `
             linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px)
           `,
-          backgroundSize: "50px 50px",
+          backgroundSize: "60px 60px",
         }}
       />
 
-      {/* 3. إضاءة الماوس التفاعلية باللون الذهبي - تتحرك في الشاشات الكبيرة */}
+      {/* كشاف الماوس التفاعلي اللي بيلحق إيدك فوراً */}
       <div
         ref={glowRef}
         className="hidden md:block absolute inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(250, 204, 21, 0.12), transparent 80%)`,
+          background: `radial-gradient(550px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(250, 204, 21, 0.1), transparent 80%)`,
         }}
       />
 
-      {/* 4. إضاءة خافتة دائرية في المنتصف تعمل على الموبايل والكمبيوتر كجمالية إضافية */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(250,204,21,0.02),transparent_70%)] pointer-events-none" />
+      {/* طبقة التنعيم السفلية لضمان سواد عميق ومريح للنصوص */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/20 to-zinc-950 pointer-events-none" />
       
     </div>
   );
