@@ -1,6 +1,30 @@
 @import "tailwindcss";
 
-/* تعريف حركات الألوان السائلة المتداخلة لـ Tailwind v4 */
+/* 1. القواعد العامة وقواعد التنسيق الأساسية */
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+/* تخصيص شريط التمرير (Scrollbar) ليناسب طابع الـ Dark Mode واللون الذهبي */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #facc15;
+}
+
+/* 2. تعريف حركات الألوان السائلة المتداخلة لـ Tailwind v4 */
 @keyframes move-glow-1 {
   0% { transform: translate(0px, 0px) scale(1); }
   50% { transform: translate(25vw, 15vh) scale(1.2) rotate(45deg); }
@@ -13,7 +37,13 @@
   100% { transform: translate(15vw, -5vh) scale(1.1) rotate(90deg); }
 }
 
-/* تسجيل الأدوات المساعدة الرسمية المتوافقة مع v4 */
+@keyframes gradient-bg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 3. تسجيل الأدوات المساعدة الرسمية المتوافقة مع v4 (@utility) */
 @utility animate-fluid-glow-1 {
   animation: move-glow-1 25s infinite alternate ease-in-out;
 }
@@ -31,13 +61,7 @@
   animation: gradient-bg 15s ease infinite;
 }
 
-@keyframes gradient-bg {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* تظبيط مؤشر الكتابة التفاعلي الخاص بـ Typed.js ليطابق الهوية البصرية */
+/* 4. تنسيق مؤشر الكتابة التفاعلي الخاص بـ Typed.js */
 .typed-cursor {
   color: #facc15 !important;
   opacity: 0.8;

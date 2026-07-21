@@ -20,7 +20,7 @@ const projects = [
     description: "End-to-end analytics platform that transforms raw sales data into business insights using data processing, visualization and intelligent analysis.",
     tech: ["Python", "Pandas", "SQL", "Plotly", "Machine Learning"],
     slug: "sales-intelligence-platform",
-    github: "#" // يمكنك استبداله برابط مستودع الـ GitHub الحقيقي لاحقاً
+    github: "https://github.com/abdelhaym953-create"
   },
   {
     title: "Mobile Sentiment Analysis",
@@ -29,7 +29,7 @@ const projects = [
     description: "NLP classification system that analyzes mobile reviews and predicts customer sentiment using machine learning models.",
     tech: ["Python", "NLP", "CatBoost", "Scikit-learn"],
     slug: "mobile-sentiment-analysis",
-    github: "#"
+    github: "https://github.com/abdelhaym953-create"
   },
   {
     title: "DataVision AI",
@@ -39,7 +39,7 @@ const projects = [
     tech: ["Python", "AI", "Data Analysis", "Streamlit"],
     slug: "datavision-ai",
     demo: "https://datavision-ai-x6nywmkxc6a2fahl8c3j6z.streamlit.app",
-    github: "#"
+    github: "https://github.com/abdelhaym953-create"
   },
   {
     title: "Solar Radiation Prediction",
@@ -49,7 +49,7 @@ const projects = [
     tech: ["LightGBM", "XGBoost", "CatBoost", "Regression"],
     slug: "solar-radiation-prediction",
     demo: "https://solar-energy-predictor.streamlit.app",
-    github: "#"
+    github: "https://github.com/abdelhaym953-create"
   },
   {
     title: "Online Sales Dashboard",
@@ -59,7 +59,7 @@ const projects = [
     tech: ["Python", "Pandas", "Plotly", "Streamlit"],
     slug: "online-sales-dashboard",
     demo: "https://online-sales-dashboard-lrpcanpcvdxc67cq4gfmjj.streamlit.app",
-    github: "#"
+    github: "https://github.com/abdelhaym953-create/Online-Sales-Dashboard"
   },
   {
     title: "Hotel Booking Intelligence Dashboard",
@@ -69,20 +69,19 @@ const projects = [
     tech: ["Python", "Pandas", "Plotly", "Streamlit"],
     slug: "hotel-booking-dashboard",
     demo: "https://hotel-booking-intelligence-dashboard-dwejjdgwbew2dbawcyhw5x.streamlit.app",
-    github: "#"
+    github: "https://github.com/abdelhaym953-create"
   }
 ];
 
 export default function Projects() {
-  // دالة للتحكم في الروابط غير المجهزة لمنع انهيار الصفحة أو حدوث صفحة بيضاء
   const handleDisabledLink = (e, type) => {
     e.preventDefault();
-    alert(`The ${type} page is currently under code preparation and will be live very soon!`);
+    alert(`The ${type} page is currently under preparation and will be live very soon!`);
   };
 
   return (
-    <section id="projects" className="py-20 md:py-28 px-4 sm:px-6 bg-zinc-950 text-white relative">
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" className="py-20 md:py-28 px-4 sm:px-6 bg-transparent text-white relative">
+      <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Section Heading */}
         <motion.div
@@ -101,7 +100,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -110,22 +109,21 @@ export default function Projects() {
               transition={{ duration: 0.4, delay: index * 0.05 }}
               viewport={{ once: true }}
               whileHover={{ y: -6 }}
-              className="relative bg-zinc-900/30 backdrop-blur-xl border border-white/5 rounded-3xl p-6 flex flex-col hover:border-yellow-400/30 transition-colors duration-300 overflow-hidden group"
+              className="relative bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex flex-col hover:border-yellow-400/30 transition-all duration-300 overflow-hidden group"
             >
-              {/* Soft Ambient Light Glowing */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-400/10 blur-3xl rounded-full transition-opacity group-hover:bg-yellow-400/20" />
+              {/* Soft Ambient Light Glow */}
+              <div className="absolute top-0 right-0 w-28 h-28 bg-yellow-400/10 blur-3xl rounded-full transition-opacity group-hover:bg-yellow-400/20 pointer-events-none" />
 
-              {/* Top Row: Icon & GitHub Shortcut */}
-              <div className="flex justify-between items-start mb-4 w-full">
+              {/* Top Row: Icon & GitHub */}
+              <div className="flex justify-between items-start mb-4 w-full relative z-10">
                 <div className="text-yellow-400 text-3xl sm:text-4xl">
                   {project.icon}
                 </div>
                 
-                {/* زر جيت هاب مخصص لكل بطاقة مشروع */}
                 {project.github === "#" ? (
                   <button
                     onClick={(e) => handleDisabledLink(e, "GitHub Repository")}
-                    className="text-slate-400 hover:text-yellow-400 text-xl p-1.5 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 transition-colors"
+                    className="text-slate-400 hover:text-yellow-400 text-lg p-2 rounded-xl bg-zinc-800/40 hover:bg-zinc-800/70 border border-white/5 transition-all"
                     title="View Source Code"
                   >
                     <FaGithub />
@@ -135,7 +133,7 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-yellow-400 text-xl p-1.5 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 transition-colors"
+                    className="text-slate-400 hover:text-yellow-400 text-lg p-2 rounded-xl bg-zinc-800/40 hover:bg-zinc-800/70 border border-white/5 transition-all"
                     title="View Source Code"
                   >
                     <FaGithub />
@@ -144,26 +142,26 @@ export default function Projects() {
               </div>
 
               {/* Type Badge */}
-              <span className="text-yellow-400/90 text-xs font-semibold tracking-wider uppercase">
+              <span className="text-yellow-400/90 text-xs font-semibold tracking-wider uppercase relative z-10">
                 {project.type}
               </span>
 
               {/* Title */}
-              <h3 className="text-xl font-bold mt-2 text-slate-100 break-words group-hover:text-yellow-400 transition-colors">
+              <h3 className="text-xl font-bold mt-2 text-slate-100 break-words group-hover:text-yellow-400 transition-colors relative z-10">
                 {project.title}
               </h3>
 
               {/* Description */}
-              <p className="text-slate-400 text-sm mt-3 leading-relaxed flex-grow">
+              <p className="text-slate-300 text-sm mt-3 leading-relaxed flex-grow relative z-10">
                 {project.description}
               </p>
 
               {/* Tech Stack Badges */}
-              <div className="flex flex-wrap gap-1.5 mt-5">
+              <div className="flex flex-wrap gap-1.5 mt-5 relative z-10">
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2.5 py-0.5 rounded-md bg-zinc-800 text-slate-300 border border-white/5 text-xs font-medium"
+                    className="px-2.5 py-0.5 rounded-md bg-zinc-800/60 text-slate-300 border border-white/10 text-xs font-medium"
                   >
                     {tech}
                   </span>
@@ -171,15 +169,14 @@ export default function Projects() {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex gap-3 mt-6 pt-4 border-t border-white/5">
-                {/* زر التفاصيل مع فحص ذكي قبل التحويل لمنع مشاكل النقل */}
+              <div className="flex gap-3 mt-6 pt-4 border-t border-white/10 relative z-10">
                 <a
                   href={`/projects/${project.slug}`}
                   onClick={(e) => {
-                    // إذا لم تكن المسارات الديناميكية جاهزة بعد، يمكنك تفعيل هذا السطر لمنع الشاشة البيضاء:
+                    // إذا لم تكن صفحات التفاصيل متاحة، يمكنك إلغاء التعليق عن السطر التالي:
                     // handleDisabledLink(e, "Project Details");
                   }}
-                  className="flex-1 text-center bg-zinc-800 text-slate-200 hover:bg-zinc-700 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-colors"
+                  className="flex-1 text-center bg-zinc-800/60 hover:bg-zinc-800 text-slate-200 py-2.5 rounded-xl font-bold text-xs sm:text-sm border border-white/10 transition-colors"
                 >
                   Details
                 </a>
@@ -189,7 +186,7 @@ export default function Projects() {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 text-center bg-yellow-400 text-zinc-950 hover:bg-yellow-300 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-colors"
+                    className="flex-1 text-center bg-yellow-400 hover:bg-yellow-300 text-zinc-950 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-colors shadow-lg shadow-yellow-400/10"
                   >
                     Live App <FaExternalLinkAlt className="text-[10px]" />
                   </a>

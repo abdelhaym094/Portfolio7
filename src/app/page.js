@@ -15,19 +15,16 @@ import Achievements from "@/components/Achievements";
 
 export default function Home() {
   return (
-    /* تم حذف bg-zinc-950 وتحويلها إلى bg-transparent لكي تظهر شبكة المربعات المضيئة من الخلف */
     <main className="min-h-screen text-white overflow-hidden relative bg-transparent selection:bg-yellow-400 selection:text-black">
       
-      {/* تم حذف <ParticlesBackground /> من هنا لمنع التكرار لأنها تعمل بذكاء من ملف layout.js خلف الموقع بالكامل */}
-
-      {/* المؤثرات الضوئية الهادئة في الزوايا (Ambient Glow) */}
+      {/* Ambient Glow / المؤثرات الضوئية الهادئة في الخلفية */}
       <div className="absolute inset-0 pointer-events-none select-none">
         <div className="absolute top-10 left-0 w-72 h-72 bg-yellow-400/10 blur-[140px] rounded-full" />
         <div className="absolute top-1/2 right-0 w-96 h-96 bg-zinc-800/20 blur-[160px] rounded-full" />
       </div>
 
       <div className="relative z-10">
-        {/* شريط التنقل العلوي */}
+        {/* Navbar */}
         <Navbar />
 
         {/* ==================== HERO SECTION ==================== */}
@@ -41,7 +38,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               {/* Badge */}
-              <div className="inline-flex bg-yellow-400/10 border border-yellow-400/20 px-4 py-1.5 rounded-full text-yellow-400 text-xs sm:text-sm font-medium mb-5 tracking-wide select-none">
+              <div className="inline-flex bg-yellow-400/10 border border-yellow-400/20 px-4 py-1.5 rounded-full text-yellow-400 text-xs sm:text-sm font-medium mb-5 tracking-wide select-none backdrop-blur-md">
                 🚀 Data Science & AI Enthusiast
               </div>
 
@@ -74,7 +71,7 @@ export default function Home() {
                   href="https://github.com/abdelhaym953-create" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="border border-white/10 text-slate-300 hover:text-yellow-400 hover:border-yellow-400/30 bg-zinc-900/40 backdrop-blur-sm px-6 py-3 rounded-xl font-bold transition-all duration-300 transform hover:-translate-y-0.5 text-sm sm:text-base"
+                  className="border border-white/10 text-slate-300 hover:text-yellow-400 hover:border-yellow-400/30 bg-zinc-900/40 backdrop-blur-md px-6 py-3 rounded-xl font-bold transition-all duration-300 transform hover:-translate-y-0.5 text-sm sm:text-base"
                 >
                   GitHub
                 </a>
@@ -83,25 +80,25 @@ export default function Home() {
                   href="https://www.linkedin.com/in/mohamed-abdelhay-3361a2308" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="border border-white/10 text-slate-300 hover:text-yellow-400 hover:border-yellow-400/30 bg-zinc-900/40 backdrop-blur-sm px-6 py-3 rounded-xl font-bold transition-all duration-300 transform hover:-translate-y-0.5 text-sm sm:text-base"
+                  className="border border-white/10 text-slate-300 hover:text-yellow-400 hover:border-yellow-400/30 bg-zinc-900/40 backdrop-blur-md px-6 py-3 rounded-xl font-bold transition-all duration-300 transform hover:-translate-y-0.5 text-sm sm:text-base"
                 >
                   LinkedIn
                 </a>
               </div>
 
               {/* Stats Counters Grid */}
-              <div className="grid grid-cols-3 gap-4 mt-12 border-t border-white/5 pt-8">
-                <div className="bg-zinc-900/20 backdrop-blur-md border border-white/5 rounded-2xl p-4 text-center hover:border-white/10 transition-colors">
+              <div className="grid grid-cols-3 gap-4 mt-12 border-t border-white/10 pt-8">
+                <div className="bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-2xl p-4 text-center hover:border-yellow-400/20 transition-colors">
                   <h3 className="text-2xl sm:text-3xl font-black text-yellow-400">6+</h3>
-                  <p className="text-xs font-medium text-slate-500 mt-1 uppercase tracking-wider">Projects</p>
+                  <p className="text-xs font-medium text-slate-400 mt-1 uppercase tracking-wider">Projects</p>
                 </div>
-                <div className="bg-zinc-900/20 backdrop-blur-md border border-white/5 rounded-2xl p-4 text-center hover:border-white/10 transition-colors">
+                <div className="bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-2xl p-4 text-center hover:border-yellow-400/20 transition-colors">
                   <h3 className="text-2xl sm:text-3xl font-black text-yellow-400">10+</h3>
-                  <p className="text-xs font-medium text-slate-500 mt-1 uppercase tracking-wider">Models</p>
+                  <p className="text-xs font-medium text-slate-400 mt-1 uppercase tracking-wider">Models</p>
                 </div>
-                <div className="bg-zinc-900/20 backdrop-blur-md border border-white/5 rounded-2xl p-4 text-center hover:border-white/10 transition-colors flex flex-col justify-center items-center">
+                <div className="bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-2xl p-4 text-center hover:border-yellow-400/20 transition-colors flex flex-col justify-center items-center">
                   <h3 className="text-sm sm:text-base font-black text-yellow-400 uppercase tracking-widest">Python</h3>
-                  <p className="text-xs font-medium text-slate-500 mt-1 uppercase tracking-wider">Core Stack</p>
+                  <p className="text-xs font-medium text-slate-400 mt-1 uppercase tracking-wider">Core Stack</p>
                 </div>
               </div>
             </motion.div>
@@ -119,13 +116,13 @@ export default function Home() {
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               >
                 {/* الهالة المضيئة الخلفية */}
-                <div className="absolute inset-0 bg-yellow-400 blur-[60px] opacity-10 rounded-full pointer-events-none" />
+                <div className="absolute inset-0 bg-yellow-400 blur-[60px] opacity-20 rounded-full pointer-events-none" />
                 
-                {/* الصورة المستجيبة */}
+                {/* الصورة الشخصية */}
                 <img
                   src="/me.jpeg"
                   alt="Mohamed Abdelhay"
-                  className="w-full h-full rounded-full object-cover border-4 border-zinc-900 shadow-2xl ring-4 ring-yellow-400/40 select-none pointer-events-none"
+                  className="w-full h-full rounded-full object-cover border-4 border-zinc-900/80 shadow-2xl ring-4 ring-yellow-400/40 select-none pointer-events-none relative z-10"
                 />
               </motion.div>
             </motion.div>

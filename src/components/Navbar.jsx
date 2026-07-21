@@ -23,6 +23,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
+    { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
   ];
@@ -32,9 +33,9 @@ export default function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-zinc-950/70 border-b border-white/5"
+      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-zinc-950/70 border-b border-white/10"
     >
-      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex justify-between items-center relative z-20">
+      <div className="max-w-5xl mx-auto px-5 sm:px-6 py-4 flex justify-between items-center relative z-20">
         {/* Logo */}
         <motion.h1 
           whileHover={{ scale: 1.02 }}
@@ -53,7 +54,7 @@ export default function Navbar() {
               className="hover:text-yellow-400 transition-colors duration-200 relative group py-1"
             >
               {link.name}
-              {/* خط متحرك تحت الرابط احترافي وبسيط باستخدام Tailwind */}
+              {/* خط متحرك تحت الرابط */}
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
@@ -103,9 +104,9 @@ export default function Navbar() {
             initial="closed"
             animate="open"
             exit="closed"
-            className="md:hidden bg-zinc-950/95 backdrop-blur-2xl border-t border-white/5 overflow-hidden w-full absolute top-full left-0 z-10"
+            className="md:hidden bg-zinc-950/95 backdrop-blur-2xl border-t border-white/10 overflow-hidden w-full absolute top-full left-0 z-10"
           >
-            <div className="flex flex-col gap-5 text-slate-300 font-medium px-6 py-6">
+            <div className="flex flex-col gap-4 text-slate-300 font-medium px-6 py-6">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -118,7 +119,7 @@ export default function Navbar() {
               ))}
               
               {/* Social links inside mobile menu */}
-              <div className="flex gap-6 pt-4 text-slate-400 border-t border-white/5 justify-center">
+              <div className="flex gap-6 pt-4 text-slate-400 border-t border-white/10 justify-center">
                 <a href="https://github.com/abdelhaym953-create" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-yellow-400 p-1">
                   <FaGithub size={22} />
                 </a>

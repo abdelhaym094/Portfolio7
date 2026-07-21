@@ -19,11 +19,11 @@ export default function TypingText() {
       ],
       typeSpeed: 60,       // سرعة كتابة متزنة ومريحة للعين
       backSpeed: 40,       // سرعة مسح رشيقة
-      backDelay: 1500,     // زيادة بسيطة لوقت الانتظار ليتمكن مستخدم الهاتف من قراءة المسميات الطويلة
-      startDelay: 300,     // تأخير بسيط جداً قبل بدء الكتابة لأول مرة
+      backDelay: 1500,     // وقت انتظار مريح للقراءة
+      startDelay: 300,     // تأخير بسيط قبل البدء
       loop: true,
-      cursorChar: "|",     // شكل مؤشر الكتابة التقليدي
-      autoInsertCss: true, // يضمن حقن التنسيقات الخاصة بالمؤشر والوميض تلقائياً لمنع أي أخطاء تكرار
+      cursorChar: "|",
+      autoInsertCss: true,
     });
 
     return () => {
@@ -35,8 +35,8 @@ export default function TypingText() {
     <span className="inline-flex items-center">
       <span
         ref={el}
-        className="text-yellow-400 font-semibold select-none"
-        style={{ minHeight: "1.5em" }} // يضمن حجز مساحة رأسية ثابتة تمنع اهتزاز العناصر المحيطة (Layout Shift)
+        className="text-yellow-400 font-bold select-none [&+.typed-cursor]:text-yellow-400 [&+.typed-cursor]:font-extralight"
+        style={{ minHeight: "1.5em" }} // حجز مساحة رأسية منعاً لاهتزاز النصوص المحيطة
       />
     </span>
   );

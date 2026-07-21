@@ -5,6 +5,7 @@ import ParticlesBackground from "@/components/ParticlesBackground";
 const inter = Inter({ 
   subsets: ["latin"],
   variable: "--font-inter", 
+  display: "swap", // تحسين تحميل الخط لمنع Layout Shift
 });
 
 export const metadata = {
@@ -21,12 +22,12 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body 
-        className={`${inter.className} bg-zinc-950 text-white antialiased min-h-screen relative`}
+        className={`${inter.variable} ${inter.className} bg-zinc-950 text-white antialiased min-h-screen relative`}
       >
         
-        {/* حاقن حركات الـ CSS النقية المتوافقة تماماً مع Tailwind v4 والمستقلة عن أي ملف خارجي */}
+        {/* حاقن حركات الـ CSS النقية المتوافقة مع Tailwind والمتنقلة بحرية */}
         <style dangerouslySetInnerHTML={{__html: `
           @keyframes fluid-motion-1 {
             0% { transform: translate(0px, 0px) scale(1); }
@@ -43,19 +44,18 @@ export default function RootLayout({ children }) {
           .running-glow-3 { animation: fluid-motion-1 18s infinite alternate-reverse ease-in-out; }
         `}} />
 
-        {/* 1. محتوى الموقع والسكاشن تترندر هنا بشكل طبيعي وآمن تماماً */}
-        <main className="relative w-full min-h-screen">
+        {/* 1. المحتوى الرئيسي للموقع */}
+        <main className="relative w-full min-h-screen z-10">
           {children}
         </main>
 
         {/* 
-          2. الحل الحاسم: تراكب الخلفية المتحركة والشبكة فوق كامل الموقع (z-50) 
-          باستخدام mix-blend-screen لتندمج الألوان مع السكاشن السفلية، 
-          ومع pointer-events-none لكي تضغط على الأزرار والروابط بحرية تامة!
+          2. طبقات الخلفية والتوهج التفاعلي (z-20) 
+          تعمل فوق لون الخلفية الأساسي وتحت عناصر التفاعل العلوية إن وُجدت
         */}
-        <div className="fixed inset-0 z-50 pointer-events-none mix-blend-screen overflow-hidden">
+        <div className="fixed inset-0 z-20 pointer-events-none mix-blend-screen overflow-hidden aria-hidden:true">
           
-          {/* طبقة الألوان السائلة المتحركة ذاتياً بتموجات الذهبي والرمادي التقني */}
+          {/* طبقة الألوان السائلة المتحركة ذاتياً */}
           <div className="absolute inset-0 opacity-60">
             {/* كرة التوهج الذهبي الدافئ الأولى */}
             <div 
@@ -69,14 +69,14 @@ export default function RootLayout({ children }) {
               style={{ background: "radial-gradient(circle, rgba(63,63,70,0.45) 0%, rgba(63,63,70,0) 70%)" }}
             />
 
-            {/* كرة ذهبية خافتة إضافية لضمان حركة الألوان يميناً ويساراً في المنتصف */}
+            {/* كرة ذهبية خافتة في المنتصف */}
             <div 
               className="absolute w-[55vw] h-[55vw] top-[25%] right-[10%] running-glow-3"
               style={{ background: "radial-gradient(circle, rgba(202,138,4,0.1) 0%, rgba(202,138,4,0) 70%)" }}
             />
           </div>
 
-          {/* شبكة المربعات التقنية تطفو فوق الألوان وتحتوي على خطوط الهوية البصرية لعلوم البيانات */}
+          {/* شبكة المربعات التقنية (Data Science Grid) */}
           <div 
             className="absolute inset-0 opacity-[0.03] md:opacity-[0.05]"
             style={{
@@ -88,7 +88,7 @@ export default function RootLayout({ children }) {
             }}
           />
 
-          {/* ندرج هنا أيضاً المكون الخاص بك لكي يضيف كشاف الماوس التفاعلي والجزئيات الفنية */}
+          {/* كشاف الماوس التفاعلي والجسيمات */}
           <ParticlesBackground />
           
         </div>
