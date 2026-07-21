@@ -51,9 +51,6 @@ export default function Footer() {
       {/* Bottom Rights */}
       <div className="max-w-5xl mx-auto text-center mt-8 pt-6 border-t border-white/10 text-slate-400 text-xs sm:text-sm flex flex-col sm:flex-row justify-between items-center gap-2 relative z-10">
         <p>© 2026 Mohamed Abdelhay. All Rights Reserved.</p>
-        <p className="flex items-center gap-1.5 justify-center">
-          Built with <FaHeart className="text-red-500 animate-pulse text-xs" /> using Next.js & Tailwind CSS
-        </p>
       </div>
     </footer>
   );

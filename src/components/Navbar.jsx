@@ -42,7 +42,7 @@ export default function Navbar() {
           whileTap={{ scale: 0.98 }}
           className="text-xl sm:text-2xl font-black tracking-wide text-yellow-400 cursor-pointer select-none"
         >
-          Mohamed.AI
+          Mohamed.A7
         </motion.h1>
 
         {/* Desktop Links */}
