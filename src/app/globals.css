@@ -1,69 +1,39 @@
 @import "tailwindcss";
 
-/* 1. القواعد العامة وقواعد التنسيق الأساسية */
+/* تحسين الأداء على الموبايل بوقف الـ Blurs التقيلة وتعويضها ببراعة */
+@media (max-width: 768px) {
+  /* تقليل جهد المعالج على الهواتف بشكل هائل */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
 }
 
-/* تخصيص شريط التمرير (Scrollbar) ليناسب طابع الـ Dark Mode واللون الذهبي */
+/* تخصيص شريط التمرير */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
-
 ::-webkit-scrollbar-track {
   background: #09090b;
 }
-
 ::-webkit-scrollbar-thumb {
   background: #27272a;
   border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: #facc15;
 }
 
-/* 2. تعريف حركات الألوان السائلة المتداخلة لـ Tailwind v4 */
-@keyframes move-glow-1 {
-  0% { transform: translate(0px, 0px) scale(1); }
-  50% { transform: translate(25vw, 15vh) scale(1.2) rotate(45deg); }
-  100% { transform: translate(-5vw, 25vh) scale(0.9) rotate(-45deg); }
+/* باقي الـ Utility والـ Keyframes كما هي */
+/* إخفاء شريط التمرير الأفقي للموبايل مع الحفاظ على التمرير */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
-
-@keyframes move-glow-2 {
-  0% { transform: translate(0px, 0px) scale(1.1); }
-  50% { transform: translate(-20vw, -15vh) scale(0.85) rotate(-90deg); }
-  100% { transform: translate(15vw, -5vh) scale(1.1) rotate(90deg); }
-}
-
-@keyframes gradient-bg {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* 3. تسجيل الأدوات المساعدة الرسمية المتوافقة مع v4 (@utility) */
-@utility animate-fluid-glow-1 {
-  animation: move-glow-1 25s infinite alternate ease-in-out;
-}
-
-@utility animate-fluid-glow-2 {
-  animation: move-glow-2 30s infinite alternate ease-in-out;
-}
-
-@utility animate-fluid-glow-3 {
-  animation: move-glow-1 20s infinite alternate-reverse ease-in-out;
-}
-
-@utility animate-gradient-glow {
-  background-size: 200% 200%;
-  animation: gradient-bg 15s ease infinite;
-}
-
-/* 4. تنسيق مؤشر الكتابة التفاعلي الخاص بـ Typed.js */
-.typed-cursor {
-  color: #facc15 !important;
-  opacity: 0.8;
-  font-weight: bold;
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

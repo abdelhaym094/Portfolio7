@@ -1,94 +1,75 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  FaGraduationCap,
-  FaDatabase,
-  FaBrain,
-  FaCode
-} from "react-icons/fa";
 
-const experiences = [
+const milestones = [
   {
-    icon: <FaGraduationCap />,
-    title: "Agricultural Engineering (Al-Azhar University)",
-    date: "2023 - 2027",
-    description: "Specializing in Solar Energy and smart automated systems."
+    title: "Agricultural Engineering",
+    org: "Al-Azhar University",
+    period: "2023 - 2027",
+    desc: "Specializing in Solar Energy and smart automated systems."
   },
   {
-    icon: <FaDatabase />,
     title: "Data Science & Analytics",
-    date: "2025 - Present",
-    description: "Mastering Python, SQL, and extracting insights from real-world datasets."
+    org: "Self-Driven & Projects",
+    period: "2025 - Present",
+    desc: "Mastering Python, SQL, and extracting insights from real-world datasets."
   },
   {
-    icon: <FaBrain />,
     title: "Machine Learning",
-    date: "2025 - Present",
-    description: "Building predictive models (Scikit-learn, XGBoost, LightGBM) to solve practical challenges."
+    org: "Advanced Modeling",
+    period: "2025 - Present",
+    desc: "Building predictive models (Scikit-learn, XGBoost, LightGBM) for practical challenges."
   },
   {
-    icon: <FaCode />,
     title: "Real-World Applications",
-    date: "Present",
-    description: "Delivering end-to-end data pipelines and AI-powered dashboards."
+    org: "AI & BI Dashboards",
+    period: "Present",
+    desc: "Delivering end-to-end data pipelines and AI-powered dashboards."
   }
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 md:py-28 px-4 sm:px-6 bg-transparent text-white relative border-t border-white/5 overflow-hidden">
-      <div className="max-w-4xl mx-auto relative z-10">
-
-        {/* Section Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-14"
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">
+    <section id="experience" className="py-12 md:py-20 px-4 sm:px-6 relative z-10">
+      <div className="max-w-4xl mx-auto">
+        
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
             My <span className="text-yellow-400">Journey</span>
           </h2>
-          <p className="text-slate-400 mt-4 max-w-2xl mx-auto text-base sm:text-lg px-2">
+          <p className="text-slate-400 text-xs sm:text-base mt-2">
             Key milestones shaping my engineering background and AI expertise.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Experience Timeline List */}
-        <div className="space-y-4 sm:space-y-6">
-          {experiences.map((item, index) => (
+        {/* Timeline Container */}
+        <div className="relative border-l-2 border-yellow-400/20 ml-3 sm:ml-6 space-y-6 md:space-y-8">
+          {milestones.map((item, idx) => (
             <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              viewport={{ once: true, margin: "-50px" }}
-              whileHover={{ y: -2 }}
-              className="group bg-zinc-900/40 backdrop-blur-md border border-white/10 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 hover:border-yellow-400/30 transition-all duration-300 relative"
+              key={idx}
+              initial={{ opacity: 0, x: -15 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.05 }}
+              className="relative pl-6 sm:pl-8 group"
             >
-              {/* Glow Effect on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
+              {/* النقطة المضيئة على الخط */}
+              <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-zinc-950 border-2 border-yellow-400 group-hover:bg-yellow-400 transition-colors shadow-sm shadow-yellow-400/50" />
 
-              {/* Icon Container */}
-              <div className="text-yellow-400 text-2xl sm:text-3xl shrink-0 transform group-hover:scale-105 transition-transform duration-300 w-fit">
-                {item.icon}
-              </div>
-
-              {/* Content Container */}
-              <div className="flex-1 min-w-0">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4">
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:text-yellow-400 transition-colors duration-300 break-words">
+              {/* الكارت المدمج */}
+              <div className="bg-zinc-900/40 backdrop-blur-md border border-white/5 rounded-xl p-4 hover:border-yellow-400/20 transition-all">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1.5">
+                  <h3 className="text-sm sm:text-lg font-bold text-white">
                     {item.title}
                   </h3>
-                  <span className="text-xs font-semibold px-3 py-1 bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 rounded-full w-fit whitespace-nowrap">
-                    {item.date}
+                  <span className="text-[10px] sm:text-xs font-semibold text-yellow-400 bg-yellow-400/10 px-2 py-0.5 rounded w-fit">
+                    {item.period}
                   </span>
                 </div>
-                
-                <p className="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
-                  {item.description}
+                <p className="text-xs text-slate-400 mb-1 font-medium">{item.org}</p>
+                <p className="text-xs text-slate-400/80 leading-relaxed">
+                  {item.desc}
                 </p>
               </div>
             </motion.div>
