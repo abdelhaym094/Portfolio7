@@ -11,6 +11,7 @@ import {
   ChevronUp,
   ArrowRight
 } from "lucide-react";
+import SectionHeader from "@/components/SectionHeader";
 
 const milestones = [
   {
@@ -71,14 +72,14 @@ export default function Experience() {
       <div className="max-w-3xl mx-auto">
         
         {/* Section Header */}
-        <div className="mb-6 sm:mb-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            Academic &amp; Professional <span className="text-cyan-400">Journey</span>
-          </h2>
-          <p className="text-slate-400 text-xs sm:text-sm mt-1">
-            Core technical progression and milestone highlights. Click expand for details.
-          </p>
-        </div>
+        <SectionHeader
+          number="03"
+          eyebrow="JOURNEY"
+          title="Academic & Professional"
+          titleHighlight="Journey"
+          description="Engineering foundations, applied machine learning, and continuous development."
+          className="mb-4 sm:mb-6"
+        />
 
         {/* Compact Vertical Timeline */}
         <div className="relative border-l border-white/[0.08] ml-3 sm:ml-4 space-y-4">

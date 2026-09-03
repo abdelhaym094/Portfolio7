@@ -9,6 +9,7 @@ import {
   TerminalSquare, 
   Sparkles
 } from "lucide-react";
+import SectionHeader from "@/components/SectionHeader";
 
 const skillCategories = [
   {
@@ -205,14 +206,14 @@ export default function Skills() {
       <div className="max-w-4xl mx-auto">
         
         {/* Section Header */}
-        <div className="mb-6 sm:mb-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            Technical <span className="text-cyan-400">Skills</span>
-          </h2>
-          <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-lg">
-            Select a domain to inspect verified technologies, algorithms, and practical applications.
-          </p>
-        </div>
+        <SectionHeader
+          number="02"
+          eyebrow="EXPERTISE"
+          title="Technical"
+          titleHighlight="Skills"
+          description="Tools and methods I use to build practical data systems."
+          className="mb-4 sm:mb-6"
+        />
 
         {/* Interactive Category Tabs */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-2 mb-5 scrollbar-none">

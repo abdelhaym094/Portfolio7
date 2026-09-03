@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Mail, Check, Copy, Send, ArrowUpRight } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -17,15 +18,22 @@ export default function Contact() {
     <section id="contact" className="py-14 sm:py-18 md:py-20 px-4 sm:px-6 relative z-10">
       <div className="max-w-3xl mx-auto">
         
+        {/* Section Header */}
+        <SectionHeader
+          number="05"
+          eyebrow="INQUIRY"
+          title="Let's Work"
+          titleHighlight="Together"
+          description="Open to machine learning, data science, and applied AI opportunities."
+          align="center"
+          className="mb-5 sm:mb-7"
+        />
+
         {/* Main Card */}
         <div className="bg-slate-900/40 border border-white/[0.08] rounded-2xl p-6 sm:p-8 text-center shadow-xl">
           
-          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            Let&apos;s Work <span className="text-cyan-400">Together</span>
-          </h2>
-
-          <p className="text-slate-300 text-xs sm:text-sm mt-2 max-w-md mx-auto leading-relaxed">
-            I am actively seeking roles in Data Science, Machine Learning, and Applied AI. Whether you have an open position, an engineering challenge, or an idea to discuss, let&apos;s connect.
+          <p className="text-slate-300 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+            Whether you have an open engineering role, a machine learning challenge, or a data project to collaborate on, let&apos;s connect directly.
           </p>
 
           {/* Action Buttons */}

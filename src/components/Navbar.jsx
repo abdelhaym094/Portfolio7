@@ -13,8 +13,8 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 const navLinks = [
   { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
-  { name: "About", href: "#about" },
   { name: "Journey", href: "#experience" },
+  { name: "About", href: "#about" },
   { name: "Contact", href: "#contact" },
 ];
 

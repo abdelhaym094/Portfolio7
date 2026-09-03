@@ -11,6 +11,7 @@ import {
   Sparkles,
   Rocket
 } from "lucide-react";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function About() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -20,11 +21,14 @@ export default function About() {
       <div className="max-w-3xl mx-auto">
         
         {/* Section Header */}
-        <div className="mb-6 sm:mb-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            About <span className="text-cyan-400">Me</span>
-          </h2>
-        </div>
+        <SectionHeader
+          number="04"
+          eyebrow="BACKGROUND"
+          title="About"
+          titleHighlight="Me"
+          description="Engineering principles, scientific curiosity, and practical execution."
+          className="mb-4 sm:mb-6"
+        />
 
         {/* Short, Essential Narrative Card (Visible Immediately) */}
         <div className="bg-slate-900/40 border border-white/[0.08] p-5 sm:p-7 rounded-2xl shadow-lg">

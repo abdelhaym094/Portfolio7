@@ -18,6 +18,7 @@ import {
   Code2
 } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import SectionHeader from "@/components/SectionHeader";
 
 const projectsData = [
   {
@@ -238,18 +239,18 @@ export default function Projects() {
       <div className="max-w-4xl mx-auto">
         
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              Featured <span className="text-cyan-400">Projects</span>
-            </h2>
-            <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-lg">
-              Practical machine learning models, analytical pipelines, and deployed applications.
-            </p>
-          </div>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-4 sm:mb-6">
+          <SectionHeader
+            number="01"
+            eyebrow="SELECTED WORK"
+            title="Featured"
+            titleHighlight="Projects"
+            description="Selected machine learning, AI, and data applications."
+            className="mb-0"
+          />
 
           {/* Interactive Category Tabs */}
-          <div className="flex flex-wrap items-center gap-1 bg-slate-900/60 border border-white/[0.07] p-1 rounded-xl self-start sm:self-auto">
+          <div className="flex flex-wrap items-center gap-1 bg-slate-900/60 border border-white/[0.07] p-1 rounded-xl self-start sm:self-end shrink-0">
             {categoryTabs.map((cat) => {
               const isSelected = selectedCategory === cat;
               return (
