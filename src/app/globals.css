@@ -1,19 +1,37 @@
 @import "tailwindcss";
 
-/* تحسين الأداء على الموبايل بوقف الـ Blurs التقيلة وتعويضها ببراعة */
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduced Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile tap optimization */
 @media (max-width: 768px) {
-  /* تقليل جهد المعالج على الهواتف بشكل هائل */
   * {
     -webkit-tap-highlight-color: transparent;
   }
 }
 
-html {
-  scroll-behavior: smooth;
-  color-scheme: dark;
+/* Custom Accessibility Focus Rings */
+:focus-visible {
+  outline: 2px solid #facc15;
+  outline-offset: 2px;
 }
 
-/* تخصيص شريط التمرير */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -28,8 +46,6 @@ html {
   background: #facc15;
 }
 
-/* باقي الـ Utility والـ Keyframes كما هي */
-/* إخفاء شريط التمرير الأفقي للموبايل مع الحفاظ على التمرير */
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }

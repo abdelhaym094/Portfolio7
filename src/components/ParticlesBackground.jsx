@@ -6,13 +6,16 @@ export default function ParticlesBackground() {
   const glowRef = useRef(null);
 
   useEffect(() => {
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
     let animationFrameId;
 
     const handleMouseMove = (e) => {
-      if (!glowRef.current) return;
       const { clientX, clientY } = e;
-      
-      // استخدام requestAnimationFrame لتحسين أداء حركة الماوس وضمان 60fps
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+
       animationFrameId = requestAnimationFrame(() => {
         if (glowRef.current) {
           glowRef.current.style.setProperty("--mouse-x", `${clientX}px`);
@@ -21,7 +24,7 @@ export default function ParticlesBackground() {
       });
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
@@ -29,60 +32,35 @@ export default function ParticlesBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 pointer-events-none select-none bg-zinc-950 overflow-hidden">
-      
-      {/* الألوان السائلة المتحركة بالخلفية */}
-      <div className="absolute inset-0 opacity-60">
-        
-        {/* كرة اللون الذهبي الدافئ */}
-        <div 
-          className="absolute w-[60vw] h-[60vw] top-[-10%] left-[-10%] animate-fluid-glow-1"
-          style={{
-            background: "radial-gradient(circle, rgba(245,158,11,0.15) 0%, rgba(245,158,11,0) 70%)"
-          }}
-        />
-        
-        {/* كرة اللون الرمادي التقني */}
-        <div 
-          className="absolute w-[70vw] h-[70vw] bottom-[-20%] right-[-10%] animate-fluid-glow-2"
-          style={{
-            background: "radial-gradient(circle, rgba(63,63,70,0.35) 0%, rgba(63,63,70,0) 70%)"
-          }}
-        />
-
-        {/* كرة ذهبية خافتة في المنتصف */}
-        <div 
-          className="absolute w-[50vw] h-[50vw] top-[25%] right-[15%] animate-fluid-glow-3"
-          style={{
-            background: "radial-gradient(circle, rgba(202,138,4,0.08) 0%, rgba(202,138,4,0) 70%)"
-          }}
-        />
-      </div>
-
-      {/* شبكة المربعات التقنية (Data Science Grid) */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] md:opacity-[0.05]"
+    <div 
+      className="fixed inset-0 -z-10 pointer-events-none select-none bg-zinc-950 overflow-hidden"
+      aria-hidden="true"
+    >
+      {/* Precision Data Science Grid */}
+      <div
+        className="absolute inset-0 opacity-[0.035]"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px)
+            linear-gradient(to right, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px)
           `,
-          backgroundSize: "60px 60px",
+          backgroundSize: "48px 48px",
         }}
       />
 
-      {/* كشاف الماوس التفاعلي */}
+      {/* Subtle Structural Vignette */}
+      <div 
+        className="absolute inset-0 bg-gradient-to-b from-zinc-950/40 via-zinc-950/80 to-zinc-950" 
+      />
+
+      {/* Subtle Mouse Spotlight (Desktop only, minimal and non-distracting) */}
       <div
         ref={glowRef}
-        className="hidden md:block absolute inset-0 pointer-events-none transition-opacity duration-300"
+        className="hidden md:block absolute inset-0 pointer-events-none transition-opacity duration-500"
         style={{
-          background: `radial-gradient(550px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(250, 204, 21, 0.08), transparent 80%)`,
+          background: `radial-gradient(650px circle at var(--mouse-x, 50%) var(--mouse-y, 30%), rgba(250, 204, 21, 0.045), transparent 75%)`,
         }}
       />
-
-      {/* طبقة التنعيم السفلية لعمق الألوان وتوضيح النصوص */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/20 to-zinc-950 pointer-events-none" />
-      
     </div>
   );
 }
