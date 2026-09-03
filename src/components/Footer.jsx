@@ -1,86 +1,58 @@
 "use client";
 
-import { Mail, ArrowUp } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { Mail } from "lucide-react";
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <footer className="bg-transparent text-white border-t border-white/[0.08] py-12 px-4 sm:px-6 relative z-10">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer className="border-t border-white/[0.08] py-8 sm:py-10 px-4 sm:px-6 relative z-10 text-center">
+      <div className="max-w-3xl mx-auto flex flex-col items-center gap-2.5">
         
-        {/* Brand & Purpose */}
-        <div className="text-center md:text-left">
-          <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-cyan-500 to-sky-600 text-slate-950 font-black text-xs flex items-center justify-center">
-              MA
-            </div>
-            <span className="text-base font-black tracking-tight text-white">
-              Mohamed <span className="text-cyan-400">Abdelhay</span>
-            </span>
-          </div>
-          <p className="text-slate-400 text-xs">
-            Data Scientist &amp; Machine Learning Developer • Al-Azhar University
-          </p>
-        </div>
+        {/* Name & Title */}
+        <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
+          Mohamed <span className="text-cyan-400">Abdelhay</span>
+        </h3>
+        
+        <p className="text-xs text-slate-400">
+          Data Scientist &amp; Machine Learning Developer
+        </p>
 
-        {/* Quick Jump Links */}
-        <div className="flex flex-wrap justify-center gap-4 text-xs font-semibold text-slate-400">
-          <a href="#projects" className="hover:text-cyan-400 transition-colors">Projects</a>
-          <a href="#skills" className="hover:text-cyan-400 transition-colors">Skills</a>
-          <a href="#about" className="hover:text-cyan-400 transition-colors">About</a>
-          <a href="#experience" className="hover:text-cyan-400 transition-colors">Journey</a>
-          <a href="#contact" className="hover:text-cyan-400 transition-colors">Contact</a>
-        </div>
-
-        {/* Social Icons & Back-to-Top */}
-        <div className="flex items-center gap-3">
+        {/* Links */}
+        <div className="flex items-center justify-center gap-3 sm:gap-4 my-2 text-xs text-slate-400">
           <a
             href="https://github.com/abdelhaym953-create"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="GitHub Profile"
-            className="w-9 h-9 rounded-xl bg-slate-900/50 border border-white/[0.08] hover:border-cyan-500/40 flex items-center justify-center text-slate-300 hover:text-cyan-400 transition-colors"
+            className="hover:text-cyan-400 transition-colors flex items-center gap-1.5 p-1"
           >
-            <FaGithub size={15} />
+            <FaGithub size={13} />
+            <span>GitHub</span>
           </a>
-
+          <span className="text-white/20">·</span>
           <a
             href="https://www.linkedin.com/in/mohamed-abdelhay-3361a2308"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="LinkedIn Profile"
-            className="w-9 h-9 rounded-xl bg-slate-900/50 border border-white/[0.08] hover:border-cyan-500/40 flex items-center justify-center text-slate-300 hover:text-cyan-400 transition-colors"
+            className="hover:text-cyan-400 transition-colors flex items-center gap-1.5 p-1"
           >
-            <FaLinkedin size={15} />
+            <FaLinkedin size={13} />
+            <span>LinkedIn</span>
           </a>
-
+          <span className="text-white/20">·</span>
           <a
             href="mailto:abdelhaym953@gmail.com"
-            aria-label="Send Email"
-            className="w-9 h-9 rounded-xl bg-slate-900/50 border border-white/[0.08] hover:border-cyan-500/40 flex items-center justify-center text-slate-300 hover:text-cyan-400 transition-colors"
+            className="hover:text-cyan-400 transition-colors flex items-center gap-1.5 p-1"
           >
-            <Mail size={15} />
+            <Mail size={13} />
+            <span>Email</span>
           </a>
-
-          <div className="h-4 w-px bg-white/10" />
-
-          <button
-            onClick={scrollToTop}
-            aria-label="Scroll to top of page"
-            className="w-9 h-9 rounded-xl bg-slate-900/50 border border-white/[0.08] hover:border-cyan-500/40 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
-          >
-            <ArrowUp size={14} />
-          </button>
         </div>
 
-      </div>
+        {/* Copyright */}
+        <p className="text-[11px] text-slate-400 mt-1">
+          © 2026 Mohamed Abdelhay
+        </p>
 
-      <div className="max-w-6xl mx-auto text-center mt-8 pt-6 border-t border-white/[0.04] text-slate-400 text-xs">
-        <p>© {new Date().getFullYear()} Mohamed Abdelhay. Built with Next.js, Tailwind CSS &amp; Framer Motion.</p>
       </div>
     </footer>
   );

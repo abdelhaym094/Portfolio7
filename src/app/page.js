@@ -10,8 +10,7 @@ import {
   Check, 
   ArrowDown, 
   Mail,
-  Sparkles,
-  ChevronRight
+  Copy
 } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
@@ -38,110 +37,101 @@ export default function Home() {
     <main className="min-h-screen text-white overflow-x-hidden relative bg-transparent selection:bg-cyan-500 selection:text-slate-950">
       <Navbar onOpenResume={() => setCvModalOpen(true)} />
 
-      {/* ==================== 1. HERO SECTION (WHO I AM & WHAT I DO) ==================== */}
+      {/* ==================== 1. HERO SECTION (SIMPLE & STRONG) ==================== */}
       <section 
         id="hero" 
-        className="min-h-[85vh] sm:min-h-[90vh] flex items-center px-4 sm:px-6 pt-24 sm:pt-28 pb-12 sm:pb-16 relative"
+        className="min-h-[80vh] sm:min-h-[85vh] flex items-center px-4 sm:px-6 pt-24 sm:pt-28 pb-12 sm:pb-16 relative"
       >
-        <div className="max-w-5xl mx-auto w-full">
-          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12">
+        <div className="max-w-4xl mx-auto w-full">
+          <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-6 sm:gap-10 text-center sm:text-left">
             
-            {/* Left: Core Identity & High-Level Purpose */}
-            <div className="flex-1 text-center md:text-left">
+            {/* Left: Core Identity */}
+            <div className="flex-1">
               
-              {/* Engineering Affiliation Tag */}
-              <div className="inline-flex items-center gap-2 bg-slate-900/80 border border-white/[0.08] px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 mb-4 shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+              {/* Secondary Affiliation Pill */}
+              <div className="inline-flex items-center gap-2 bg-slate-900/60 border border-white/[0.07] px-3 py-1 rounded-full text-[11px] font-medium text-slate-400 mb-3.5 shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
                 <span>Al-Azhar University • Biosystems Engineering</span>
               </div>
 
               {/* Primary Name Display */}
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
                 Mohamed <span className="text-cyan-400">Abdelhay</span>
               </h1>
 
               {/* Subtitle / Role Focus */}
-              <p className="text-lg sm:text-2xl font-bold text-slate-200 mt-2">
+              <p className="text-base sm:text-xl font-bold text-slate-200 mt-1.5 sm:mt-2">
                 Data Scientist &amp; Machine Learning Developer
               </p>
 
-              {/* Focused 1–2 Sentence Statement */}
-              <p className="mt-4 text-slate-300 leading-relaxed text-sm sm:text-base max-w-xl">
-                I build predictive machine learning models, end-to-end data pipelines, and interactive decision dashboards. Grounded in engineering discipline, I turn complex telemetry and real-world datasets into clear operational intelligence.
+              {/* 1–2 Sentence Statement */}
+              <p className="mt-3 sm:mt-3.5 text-slate-300 leading-relaxed text-xs sm:text-sm md:text-base max-w-lg">
+                I build practical machine learning systems, data-driven applications, and interactive decision tools.
               </p>
 
-              {/* Direct Primary CTAs */}
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-7">
+              {/* Only Two Primary Buttons */}
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 mt-6">
                 <a 
                   href="#projects" 
-                  className="min-h-[44px] bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-xl font-bold transition-all text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 active:scale-95"
+                  className="min-h-[44px] bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-5 sm:px-6 py-2.5 rounded-xl font-bold transition-all text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm shadow-cyan-500/20 active:scale-95"
                 >
                   <span>View Projects</span>
-                  <ArrowDown size={15} />
+                  <ArrowDown size={14} />
                 </a>
 
                 <a 
                   href="#contact" 
-                  className="min-h-[44px] border border-white/[0.12] hover:border-cyan-500/40 bg-slate-900/60 hover:bg-slate-900 text-slate-200 hover:text-white px-5 py-2.5 rounded-xl font-semibold transition-all text-sm flex items-center justify-center gap-2 active:scale-95"
+                  className="min-h-[44px] border border-white/[0.12] hover:border-cyan-500/40 bg-slate-900/60 hover:bg-slate-900 text-slate-200 hover:text-white px-5 sm:px-6 py-2.5 rounded-xl font-semibold transition-all text-xs sm:text-sm flex items-center justify-center gap-2 active:scale-95"
                 >
                   <span>Contact Me</span>
                 </a>
-
-                <button
-                  onClick={() => setCvModalOpen(true)}
-                  className="min-h-[44px] border border-white/[0.08] hover:border-white/20 bg-slate-900/40 hover:bg-slate-900 text-slate-300 hover:text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors flex items-center justify-center gap-1.5"
-                  aria-label="View Resume Summary"
-                >
-                  <FileText size={14} className="text-cyan-400" />
-                  <span>Resume</span>
-                </button>
               </div>
 
-              {/* Subtle Social Links */}
-              <div className="flex items-center justify-center md:justify-start gap-4 mt-7 pt-5 border-t border-white/[0.06] text-xs text-slate-400">
+              {/* Small & Elegant Social Links */}
+              <div className="flex items-center justify-center sm:justify-start gap-3 sm:gap-4 mt-5 text-xs text-slate-400">
                 <a 
                   href="https://github.com/abdelhaym953-create" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors p-1"
                 >
-                  <FaGithub size={15} />
+                  <FaGithub size={14} />
                   <span>GitHub</span>
                 </a>
-                <span className="text-white/10">•</span>
+                <span className="text-white/20">·</span>
                 <a 
                   href="https://www.linkedin.com/in/mohamed-abdelhay-3361a2308" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors p-1"
                 >
-                  <FaLinkedin size={15} />
+                  <FaLinkedin size={14} />
                   <span>LinkedIn</span>
                 </a>
-                <span className="text-white/10">•</span>
-                <a 
-                  href="mailto:abdelhaym953@gmail.com"
-                  className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors p-1"
+                <span className="text-white/20">·</span>
+                <button 
+                  onClick={handleCopyEmail}
+                  className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors p-1 cursor-pointer"
+                  title="Click to copy email address"
                 >
-                  <Mail size={15} />
-                  <span>abdelhaym953@gmail.com</span>
-                </a>
+                  {copiedEmail ? <Check size={13} className="text-emerald-400" /> : <Mail size={13} />}
+                  <span>{copiedEmail ? "Copied!" : "Email"}</span>
+                </button>
               </div>
 
             </div>
 
-            {/* Right: Portrait with Subtle Data Lattice Geometry */}
-            <div className="shrink-0 flex justify-center relative">
-              {/* Subtle Data Science Neural Lattice */}
+            {/* Right: Elegant, Controlled Profile Avatar */}
+            <div className="shrink-0 relative flex items-center justify-center">
               <DataLattice />
-
-              <div className="relative w-36 h-36 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-3xl overflow-hidden border-2 border-white/[0.1] bg-slate-900 shadow-2xl p-1 group hover:border-cyan-500/40 transition-colors duration-300">
-                <div className="w-full h-full rounded-2xl overflow-hidden relative">
+              
+              <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-2xl overflow-hidden border border-white/[0.12] bg-slate-900 shadow-xl p-1 group hover:border-cyan-500/40 transition-colors duration-300">
+                <div className="w-full h-full rounded-xl overflow-hidden relative">
                   <Image
                     src="/me.jpeg"
                     alt="Mohamed Abdelhay"
                     fill
-                    sizes="(max-width: 640px) 144px, (max-width: 768px) 192px, 224px"
+                    sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, 176px"
                     priority
                     className="object-cover object-center"
                   />
@@ -153,22 +143,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ==================== 2. SELECTED PROJECTS (PROGRESSIVE DISCLOSURE TABS) ==================== */}
+      {/* ==================== 2. FEATURED PROJECTS ==================== */}
       <Projects />
 
-      {/* ==================== 3. TECHNICAL SKILLS (INTERACTIVE CATEGORIES) ==================== */}
+      {/* ==================== 3. TECHNICAL SKILLS ==================== */}
       <Skills />
 
-      {/* ==================== 4. ABOUT (SHORT + EXPANDABLE DETAILS) ==================== */}
+      {/* ==================== 4. ABOUT ==================== */}
       <About />
 
-      {/* ==================== 5. EXPERIENCE & TRAJECTORY (INTERACTIVE TIMELINE) ==================== */}
+      {/* ==================== 5. JOURNEY / TIMELINE ==================== */}
       <Experience />
 
-      {/* ==================== 6. CONTACT SECTION (PROMINENT & DIRECT) ==================== */}
+      {/* ==================== 6. CONTACT SECTION ==================== */}
       <Contact />
 
-      {/* ==================== 7. MINIMAL FOOTER ==================== */}
+      {/* ==================== 7. FOOTER ==================== */}
       <Footer />
 
       {/* ==================== RESUME SUMMARY MODAL ==================== */}
@@ -215,7 +205,7 @@ export default function Home() {
                     Core Technical Stack
                   </span>
                   <p className="leading-relaxed font-mono text-[11px] text-slate-200">
-                    Python, LightGBM, CatBoost, XGBoost, Scikit-Learn, Pandas, NumPy, SQL, Streamlit, Plotly, Git, Feature Engineering, TimeSeriesSplit.
+                    Python, LightGBM, CatBoost, XGBoost, Scikit-Learn, Pandas, NumPy, SQL, Streamlit, Plotly, Git, TimeSeriesSplit.
                   </p>
                 </div>
 
@@ -244,7 +234,7 @@ export default function Home() {
                   onClick={handleCopyEmail}
                   className="min-h-[44px] px-4 border border-white/[0.12] hover:border-cyan-500/40 text-slate-200 hover:text-white text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 bg-slate-900/60"
                 >
-                  {copiedEmail ? <Check size={14} className="text-emerald-400" /> : <Mail size={14} />}
+                  {copiedEmail ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
                   <span>{copiedEmail ? "Email Copied!" : "Copy Email"}</span>
                 </button>
               </div>

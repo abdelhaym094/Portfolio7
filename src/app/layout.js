@@ -9,17 +9,17 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Mohamed Abdelhay | Data Scientist & Machine Learning Engineer",
-  description: "Portfolio of Mohamed Abdelhay — Applied Machine Learning Engineer & Data Scientist specializing in predictive systems, automated analytics, and interactive intelligence dashboards.",
+  title: "Mohamed Abdelhay | Data Scientist & Machine Learning Developer",
+  description: "Portfolio of Mohamed Abdelhay — Applied Machine Learning Engineer & Data Scientist specializing in predictive systems, automated analytics, and interactive decision tools.",
   openGraph: {
-    title: "Mohamed Abdelhay | Data Scientist & Machine Learning Engineer",
-    description: "Portfolio of Mohamed Abdelhay — Applied Machine Learning Engineer & Data Scientist specializing in predictive systems, automated analytics, and interactive intelligence dashboards.",
+    title: "Mohamed Abdelhay | Data Scientist & Machine Learning Developer",
+    description: "Portfolio of Mohamed Abdelhay — Applied Machine Learning Engineer & Data Scientist specializing in predictive systems, automated analytics, and interactive decision tools.",
     type: "website",
   },
 };
 
 export const viewport = {
-  themeColor: "#09090b",
+  themeColor: "#090d16",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body 
-        className={`${inter.variable} ${inter.className} bg-zinc-950 text-white antialiased min-h-screen relative overflow-x-hidden selection:bg-yellow-400 selection:text-zinc-950`}
+        className={`${inter.variable} ${inter.className} bg-[#090d16] text-white antialiased min-h-screen relative overflow-x-hidden selection:bg-cyan-500 selection:text-slate-950`}
       >
         <ParticlesBackground />
         
