@@ -11,6 +11,11 @@ const inter = Inter({
 export const metadata = {
   title: "Mohamed Abdelhay | Data Scientist & Machine Learning Engineer",
   description: "Portfolio of Mohamed Abdelhay — Applied Machine Learning Engineer & Data Scientist specializing in predictive systems, automated analytics, and interactive intelligence dashboards.",
+  openGraph: {
+    title: "Mohamed Abdelhay | Data Scientist & Machine Learning Engineer",
+    description: "Portfolio of Mohamed Abdelhay — Applied Machine Learning Engineer & Data Scientist specializing in predictive systems, automated analytics, and interactive intelligence dashboards.",
+    type: "website",
+  },
 };
 
 export const viewport = {

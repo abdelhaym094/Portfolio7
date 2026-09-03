@@ -384,12 +384,12 @@ export default function ProjectCaseStudy() {
 
   if (!project) {
     return (
-      <main className="min-h-screen bg-zinc-950 text-white flex flex-col items-center justify-center p-6 text-center">
+      <main className="min-h-screen bg-[#090d16] text-white flex flex-col items-center justify-center p-6 text-center">
         <h1 className="text-3xl font-black mb-3">Case Study Not Found</h1>
         <p className="text-slate-400 text-sm mb-6">The requested engineering case study could not be located.</p>
         <Link
           href="/#projects"
-          className="bg-yellow-400 text-zinc-950 font-bold text-xs px-5 py-2.5 rounded-xl hover:bg-yellow-300 transition-colors inline-flex items-center gap-2"
+          className="bg-cyan-500 text-slate-950 font-bold text-xs px-5 py-2.5 rounded-xl hover:bg-cyan-400 transition-colors inline-flex items-center gap-2 shadow-sm shadow-cyan-500/20"
         >
           <ArrowLeft size={14} />
           <span>Return to Portfolio</span>
@@ -399,20 +399,20 @@ export default function ProjectCaseStudy() {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-white px-4 sm:px-6 py-12 md:py-20 relative z-10 selection:bg-yellow-400 selection:text-zinc-950">
+    <main className="min-h-screen bg-[#090d16] text-white px-4 sm:px-6 py-12 md:py-20 relative z-10 selection:bg-cyan-500 selection:text-slate-950">
       <div className="max-w-4xl mx-auto">
         
         {/* Navigation Bar */}
         <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/[0.08]">
           <Link
             href="/#projects"
-            className="text-xs font-bold text-slate-300 hover:text-yellow-400 flex items-center gap-2 transition-colors"
+            className="text-xs font-bold text-slate-300 hover:text-cyan-400 flex items-center gap-2 transition-colors"
           >
             <ArrowLeft size={14} />
             <span>Back to All Case Studies</span>
           </Link>
 
-          <span className="text-[11px] font-mono font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-md">
+          <span className="text-[11px] font-mono font-bold text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2.5 py-1 rounded-md">
             {project.metricBadge}
           </span>
         </div>
@@ -422,9 +422,9 @@ export default function ProjectCaseStudy() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="bg-zinc-900/40 border border-white/[0.1] rounded-3xl p-6 sm:p-10 shadow-2xl mb-10"
+          className="bg-slate-900/40 border border-white/[0.1] rounded-3xl p-6 sm:p-10 shadow-2xl mb-10"
         >
-          <span className="text-[11px] font-bold text-yellow-400 uppercase tracking-widest bg-yellow-400/10 border border-yellow-400/20 px-3 py-1 rounded-full inline-block mb-4">
+          <span className="text-[11px] font-bold text-cyan-400 uppercase tracking-widest bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full inline-block mb-4">
             {project.category}
           </span>
 
@@ -441,7 +441,7 @@ export default function ProjectCaseStudy() {
             {project.liveDemo && (
               <button
                 onClick={() => setStreamlitNoticeOpen(true)}
-                className="bg-yellow-400 text-zinc-950 font-bold text-xs sm:text-sm px-6 py-3 rounded-xl hover:bg-yellow-300 transition-all shadow-sm flex items-center gap-2 active:scale-95"
+                className="bg-cyan-500 text-slate-950 font-bold text-xs sm:text-sm px-6 py-3 rounded-xl hover:bg-cyan-400 transition-all shadow-sm shadow-cyan-500/25 flex items-center gap-2 active:scale-95"
               >
                 <Rocket size={14} />
                 <span>Launch Interactive Demo</span>
@@ -452,7 +452,7 @@ export default function ProjectCaseStudy() {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-white/[0.12] hover:border-yellow-400/40 bg-zinc-800/50 hover:bg-zinc-800 text-slate-200 hover:text-white font-semibold text-xs sm:text-sm px-5 py-3 rounded-xl transition-colors flex items-center gap-2"
+              className="border border-white/[0.12] hover:border-cyan-500/40 bg-slate-800/50 hover:bg-slate-800 text-slate-200 hover:text-white font-semibold text-xs sm:text-sm px-5 py-3 rounded-xl transition-colors flex items-center gap-2"
             >
               <FaGithub size={15} />
               <span>Source Repository</span>
@@ -464,16 +464,16 @@ export default function ProjectCaseStudy() {
         <div className="space-y-8">
           
           {/* 1. Problem Statement */}
-          <section className="bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
+          <section className="bg-slate-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
             <h2 className="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <AlertTriangle size={18} className="text-yellow-400" />
+              <AlertTriangle size={18} className="text-amber-400" />
               <span>1. Problem Statement</span>
             </h2>
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
               {project.problem.summary}
             </p>
-            <div className="bg-zinc-950/60 border border-yellow-400/20 rounded-xl p-4">
-              <span className="text-[11px] font-bold text-yellow-400 uppercase tracking-wider block mb-1">
+            <div className="bg-slate-950/60 border border-amber-400/20 rounded-xl p-4">
+              <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider block mb-1">
                 Core Engineering Bottleneck:
               </span>
               <p className="text-xs text-slate-300 leading-relaxed">
@@ -483,10 +483,10 @@ export default function ProjectCaseStudy() {
           </section>
 
           {/* 2. Approach & Pipeline Schematic */}
-          <section className="bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
+          <section className="bg-slate-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
             <h2 className="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Workflow size={18} className="text-yellow-400" />
-              <span>2. System Approach & Visual Architecture</span>
+              <Workflow size={18} className="text-cyan-400" />
+              <span>2. System Approach &amp; Visual Architecture</span>
             </h2>
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
               {project.approach.summary}
@@ -496,10 +496,10 @@ export default function ProjectCaseStudy() {
               {project.approach.flow.map((step, idx) => (
                 <div
                   key={idx}
-                  className="bg-zinc-950/60 border border-white/[0.06] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4"
+                  className="bg-slate-950/60 border border-white/[0.06] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4"
                 >
                   <div className="flex items-center gap-2 sm:min-w-[200px]">
-                    <span className="w-5 h-5 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 font-mono text-xs font-bold flex items-center justify-center shrink-0">
+                    <span className="w-5 h-5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs font-bold flex items-center justify-center shrink-0">
                       {idx + 1}
                     </span>
                     <span className="text-xs font-bold text-white">
@@ -515,28 +515,28 @@ export default function ProjectCaseStudy() {
           </section>
 
           {/* 3. Data & Telemetry Ingestion */}
-          <section className="bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
+          <section className="bg-slate-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
             <h2 className="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Database size={18} className="text-yellow-400" />
-              <span>3. Data Ingestion & Characteristics</span>
+              <Database size={18} className="text-cyan-400" />
+              <span>3. Data Ingestion &amp; Characteristics</span>
             </h2>
             <div className="space-y-3 text-xs sm:text-sm text-slate-300">
               <p><strong className="text-white">Data Origin:</strong> {project.data.source}</p>
               <p><strong className="text-white">Input Attributes:</strong> {project.data.features}</p>
-              <p><strong className="text-white">Preprocessing & Cleaning:</strong> {project.data.preprocessing}</p>
+              <p><strong className="text-white">Preprocessing &amp; Cleaning:</strong> {project.data.preprocessing}</p>
             </div>
           </section>
 
           {/* 4. Methodology & Feature Engineering */}
-          <section className="bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
+          <section className="bg-slate-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
             <h2 className="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Sliders size={18} className="text-yellow-400" />
-              <span>4. Methodology & Feature Engineering</span>
+              <Sliders size={18} className="text-cyan-400" />
+              <span>4. Methodology &amp; Feature Engineering</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {project.methodology.map((m, idx) => (
-                <div key={idx} className="bg-zinc-950/60 border border-white/[0.06] rounded-xl p-4">
-                  <h3 className="text-xs font-bold text-yellow-400 mb-1.5">{m.name}</h3>
+                <div key={idx} className="bg-slate-950/60 border border-white/[0.06] rounded-xl p-4">
+                  <h3 className="text-xs font-bold text-cyan-400 mb-1.5">{m.name}</h3>
                   <p className="text-[11px] text-slate-300 leading-relaxed">{m.details}</p>
                 </div>
               ))}
@@ -544,10 +544,10 @@ export default function ProjectCaseStudy() {
           </section>
 
           {/* 5. Model Architecture & Benchmarking */}
-          <section className="bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
+          <section className="bg-slate-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
             <h2 className="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Cpu size={18} className="text-yellow-400" />
-              <span>5. Model Architecture & Benchmarking</span>
+              <Cpu size={18} className="text-cyan-400" />
+              <span>5. Model Architecture &amp; Benchmarking</span>
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
               {project.models.architecture}
@@ -555,7 +555,7 @@ export default function ProjectCaseStudy() {
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs border border-white/[0.08] rounded-xl overflow-hidden">
-                <thead className="bg-zinc-950/80 text-slate-400 uppercase text-[10px] tracking-wider border-b border-white/[0.08]">
+                <thead className="bg-slate-950/80 text-slate-400 uppercase text-[10px] tracking-wider border-b border-white/[0.08]">
                   <tr>
                     <th className="p-3">Model Candidate</th>
                     {project.models.benchmarks[0].rmse !== "N/A" && <th className="p-3">RMSE</th>}
@@ -563,11 +563,11 @@ export default function ProjectCaseStudy() {
                     <th className="p-3">Primary Metric</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/[0.04] bg-zinc-950/40">
+                <tbody className="divide-y divide-white/[0.04] bg-slate-950/40">
                   {project.models.benchmarks.map((b, bIdx) => (
-                    <tr key={bIdx} className={b.best ? "bg-yellow-400/5 text-yellow-300 font-bold" : "text-slate-300"}>
+                    <tr key={bIdx} className={b.best ? "bg-cyan-500/10 text-cyan-300 font-bold" : "text-slate-300"}>
                       <td className="p-3 flex items-center gap-2">
-                        {b.best && <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />}
+                        {b.best && <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />}
                         <span>{b.model}</span>
                       </td>
                       {b.rmse !== "N/A" && <td className="p-3 font-mono">{b.rmse}</td>}
@@ -581,10 +581,10 @@ export default function ProjectCaseStudy() {
           </section>
 
           {/* 6. Evaluation & Validation */}
-          <section className="bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
+          <section className="bg-slate-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
             <h2 className="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <BarChart2 size={18} className="text-yellow-400" />
-              <span>6. Evaluation & Validation Strategy</span>
+              <BarChart2 size={18} className="text-cyan-400" />
+              <span>6. Evaluation &amp; Validation Strategy</span>
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
               {project.evaluation}
@@ -592,15 +592,15 @@ export default function ProjectCaseStudy() {
           </section>
 
           {/* 7. Key Results */}
-          <section className="bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
+          <section className="bg-slate-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
             <h2 className="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <TrendingUp size={18} className="text-yellow-400" />
+              <TrendingUp size={18} className="text-emerald-400" />
               <span>7. Quantitative Results</span>
             </h2>
             <ul className="space-y-2.5">
               {project.results.map((r, rIdx) => (
                 <li key={rIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
-                  <CheckCircle2 size={15} className="text-yellow-400 shrink-0 mt-0.5" />
+                  <CheckCircle2 size={15} className="text-emerald-400 shrink-0 mt-0.5" />
                   <span>{r}</span>
                 </li>
               ))}
@@ -608,10 +608,10 @@ export default function ProjectCaseStudy() {
           </section>
 
           {/* 8. Practical & Business Impact */}
-          <section className="bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
+          <section className="bg-slate-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
             <h2 className="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Lightbulb size={18} className="text-yellow-400" />
-              <span>8. Practical & Operational Value</span>
+              <Lightbulb size={18} className="text-amber-400" />
+              <span>8. Practical &amp; Operational Value</span>
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
               {project.impact}
@@ -619,16 +619,16 @@ export default function ProjectCaseStudy() {
           </section>
 
           {/* 9. Technologies Used */}
-          <section className="bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
+          <section className="bg-slate-900/40 border border-white/[0.06] rounded-2xl p-6 sm:p-8">
             <h2 className="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Layers size={18} className="text-yellow-400" />
+              <Layers size={18} className="text-cyan-400" />
               <span>9. Technical Ecosystem</span>
             </h2>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((t) => (
                 <span
                   key={t}
-                  className="bg-zinc-800/80 border border-white/[0.08] text-slate-200 text-xs font-semibold px-3 py-1 rounded-lg"
+                  className="bg-slate-800/80 border border-white/[0.08] text-slate-200 text-xs font-semibold px-3 py-1 rounded-lg"
                 >
                   {t}
                 </span>
@@ -648,9 +648,9 @@ export default function ProjectCaseStudy() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-zinc-900 border border-white/[0.12] rounded-2xl p-6 max-w-md w-full relative shadow-2xl text-center"
+              className="bg-[#0b101c] border border-white/[0.12] rounded-2xl p-6 max-w-md w-full relative shadow-2xl text-center"
             >
-              <div className="w-12 h-12 rounded-2xl bg-yellow-400/10 border border-yellow-400/25 flex items-center justify-center text-yellow-400 mx-auto mb-3">
+              <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/25 flex items-center justify-center text-cyan-400 mx-auto mb-3">
                 <Zap size={22} />
               </div>
 
@@ -668,7 +668,7 @@ export default function ProjectCaseStudy() {
                     window.open(project.liveDemo, "_blank", "noopener,noreferrer");
                     setStreamlitNoticeOpen(false);
                   }}
-                  className="w-full bg-yellow-400 text-zinc-950 font-bold text-xs py-3 rounded-xl hover:bg-yellow-300 transition-all flex items-center justify-center gap-2 shadow-sm"
+                  className="w-full bg-cyan-500 text-slate-950 font-bold text-xs py-3 rounded-xl hover:bg-cyan-400 transition-all flex items-center justify-center gap-2 shadow-sm shadow-cyan-500/20"
                 >
                   <Rocket size={14} />
                   <span>Continue to Live Application</span>

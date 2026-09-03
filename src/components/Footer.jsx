@@ -15,25 +15,25 @@ export default function Footer() {
         {/* Brand & Purpose */}
         <div className="text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
-            <div className="w-6 h-6 rounded-md bg-yellow-400 text-zinc-950 font-black text-[10px] flex items-center justify-center">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-cyan-500 to-sky-600 text-slate-950 font-black text-xs flex items-center justify-center">
               MA
             </div>
             <span className="text-base font-black tracking-tight text-white">
-              Mohamed <span className="text-yellow-400">Abdelhay</span>
+              Mohamed <span className="text-cyan-400">Abdelhay</span>
             </span>
           </div>
           <p className="text-slate-400 text-xs">
-            Data Scientist & Machine Learning Engineer • Al-Azhar University
+            Data Scientist &amp; Machine Learning Developer • Al-Azhar University
           </p>
         </div>
 
         {/* Quick Jump Links */}
         <div className="flex flex-wrap justify-center gap-4 text-xs font-semibold text-slate-400">
-          <a href="#about" className="hover:text-yellow-400 transition-colors">About</a>
-          <a href="#experience" className="hover:text-yellow-400 transition-colors">Journey</a>
-          <a href="#skills" className="hover:text-yellow-400 transition-colors">Skills</a>
-          <a href="#projects" className="hover:text-yellow-400 transition-colors">Case Studies</a>
-          <a href="#contact" className="hover:text-yellow-400 transition-colors">Contact</a>
+          <a href="#projects" className="hover:text-cyan-400 transition-colors">Projects</a>
+          <a href="#skills" className="hover:text-cyan-400 transition-colors">Skills</a>
+          <a href="#about" className="hover:text-cyan-400 transition-colors">About</a>
+          <a href="#experience" className="hover:text-cyan-400 transition-colors">Journey</a>
+          <a href="#contact" className="hover:text-cyan-400 transition-colors">Contact</a>
         </div>
 
         {/* Social Icons & Back-to-Top */}
@@ -43,7 +43,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
-            className="w-9 h-9 rounded-xl bg-zinc-900/40 border border-white/[0.08] hover:border-yellow-400/40 flex items-center justify-center text-slate-300 hover:text-yellow-400 transition-colors"
+            className="w-9 h-9 rounded-xl bg-slate-900/50 border border-white/[0.08] hover:border-cyan-500/40 flex items-center justify-center text-slate-300 hover:text-cyan-400 transition-colors"
           >
             <FaGithub size={15} />
           </a>
@@ -53,7 +53,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
-            className="w-9 h-9 rounded-xl bg-zinc-900/40 border border-white/[0.08] hover:border-yellow-400/40 flex items-center justify-center text-slate-300 hover:text-yellow-400 transition-colors"
+            className="w-9 h-9 rounded-xl bg-slate-900/50 border border-white/[0.08] hover:border-cyan-500/40 flex items-center justify-center text-slate-300 hover:text-cyan-400 transition-colors"
           >
             <FaLinkedin size={15} />
           </a>
@@ -61,7 +61,7 @@ export default function Footer() {
           <a
             href="mailto:abdelhaym953@gmail.com"
             aria-label="Send Email"
-            className="w-9 h-9 rounded-xl bg-zinc-900/40 border border-white/[0.08] hover:border-yellow-400/40 flex items-center justify-center text-slate-300 hover:text-yellow-400 transition-colors"
+            className="w-9 h-9 rounded-xl bg-slate-900/50 border border-white/[0.08] hover:border-cyan-500/40 flex items-center justify-center text-slate-300 hover:text-cyan-400 transition-colors"
           >
             <Mail size={15} />
           </a>
@@ -71,7 +71,7 @@ export default function Footer() {
           <button
             onClick={scrollToTop}
             aria-label="Scroll to top of page"
-            className="w-9 h-9 rounded-xl bg-zinc-900/40 border border-white/[0.08] hover:border-yellow-400/40 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+            className="w-9 h-9 rounded-xl bg-slate-900/50 border border-white/[0.08] hover:border-cyan-500/40 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
           >
             <ArrowUp size={14} />
           </button>
@@ -80,7 +80,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-6xl mx-auto text-center mt-8 pt-6 border-t border-white/[0.04] text-slate-400 text-xs">
-        <p>© {new Date().getFullYear()} Mohamed Abdelhay. Architected with Next.js & Tailwind CSS.</p>
+        <p>© {new Date().getFullYear()} Mohamed Abdelhay. Built with Next.js, Tailwind CSS &amp; Framer Motion.</p>
       </div>
     </footer>
   );

@@ -9,24 +9,20 @@ import {
   X, 
   Check, 
   ArrowDown, 
-  Mail, 
-  Terminal,
-  Activity,
-  Cpu,
-  GraduationCap
+  Mail,
+  Sparkles,
+  ChevronRight
 } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 import Navbar from "@/components/Navbar";
-import TypingText from "@/components/TypingText";
 import DataLattice from "@/components/DataLattice";
-
-import About from "@/components/About";
-import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
+import About from "@/components/About";
+import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import Experience from "@/components/Experience";
 
 export default function Home() {
   const [cvModalOpen, setCvModalOpen] = useState(false);
@@ -39,240 +35,196 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen text-white overflow-x-hidden relative bg-transparent selection:bg-yellow-400 selection:text-zinc-950">
+    <main className="min-h-screen text-white overflow-x-hidden relative bg-transparent selection:bg-cyan-500 selection:text-slate-950">
       <Navbar onOpenResume={() => setCvModalOpen(true)} />
 
-      {/* ==================== HERO SECTION ==================== */}
+      {/* ==================== 1. HERO SECTION (WHO I AM & WHAT I DO) ==================== */}
       <section 
         id="hero" 
-        className="min-h-[92vh] md:min-h-screen flex items-center px-4 sm:px-6 pt-28 md:pt-32 pb-16 md:pb-24 relative"
+        className="min-h-[85vh] sm:min-h-[90vh] flex items-center px-4 sm:px-6 pt-24 sm:pt-28 pb-12 sm:pb-16 relative"
       >
-        <div className="max-w-6xl mx-auto w-full flex flex-col md:grid md:grid-cols-12 gap-10 md:gap-12 items-center">
-          
-          {/* 1. Left: Hero Content & Positioning (7 cols) */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="md:col-span-7 text-center md:text-left flex flex-col items-center md:items-start"
-          >
-            {/* Status & Specialization Pill */}
-            <div className="inline-flex items-center gap-2.5 bg-zinc-900/80 border border-white/[0.08] px-3.5 py-1.5 rounded-full text-xs font-semibold mb-5 shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </span>
-              <span className="text-slate-300 text-[11px] sm:text-xs">
-                Available for Data Science & ML Roles
-              </span>
-              <span className="text-white/20">•</span>
-              <span className="text-yellow-400 text-[11px] sm:text-xs font-mono">
-                Al-Azhar University
-              </span>
-            </div>
-
-            {/* Authority Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1]">
-              Mohamed <span className="text-yellow-400">Abdelhay</span>
-            </h1>
-
-            {/* Dynamic Role Subtitle */}
-            <div className="text-lg sm:text-2xl font-bold text-slate-200 mt-3 min-h-[36px] flex items-center">
-              <TypingText />
-            </div>
-
-            {/* Supporting Value Proposition */}
-            <p className="mt-4 text-slate-300 leading-relaxed text-sm sm:text-base max-w-xl">
-              Agricultural & Biosystems Engineering researcher at Al-Azhar University specializing in Solar Energy systems. I architect machine learning models (LightGBM, CatBoost), automated data pipelines, and real-time decision dashboards that translate messy telemetry into operational intelligence.
-            </p>
-
-            {/* Action Buttons */}
-            <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-7 w-full sm:w-auto">
-              <a 
-                href="#projects" 
-                className="flex-1 sm:flex-none bg-yellow-400 text-zinc-950 px-6 py-3 rounded-xl font-bold hover:bg-yellow-300 transition-all text-xs sm:text-sm text-center shadow-lg shadow-yellow-400/10 active:scale-95 flex items-center justify-center gap-2"
-              >
-                <span>Explore Case Studies</span>
-                <ArrowDown size={14} />
-              </a>
-
-              <button
-                onClick={() => setCvModalOpen(true)}
-                className="flex-1 sm:flex-none border border-white/[0.12] hover:border-yellow-400/50 bg-zinc-900/60 hover:bg-zinc-900 text-slate-200 hover:text-white px-5 py-3 rounded-xl font-semibold transition-all text-xs sm:text-sm flex items-center justify-center gap-2 active:scale-95"
-              >
-                <FileText size={14} className="text-yellow-400" />
-                <span>View Resume</span>
-              </button>
+        <div className="max-w-5xl mx-auto w-full">
+          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12">
+            
+            {/* Left: Core Identity & High-Level Purpose */}
+            <div className="flex-1 text-center md:text-left">
               
-              <div className="flex items-center gap-2">
+              {/* Engineering Affiliation Tag */}
+              <div className="inline-flex items-center gap-2 bg-slate-900/80 border border-white/[0.08] px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 mb-4 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                <span>Al-Azhar University • Biosystems Engineering</span>
+              </div>
+
+              {/* Primary Name Display */}
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+                Mohamed <span className="text-cyan-400">Abdelhay</span>
+              </h1>
+
+              {/* Subtitle / Role Focus */}
+              <p className="text-lg sm:text-2xl font-bold text-slate-200 mt-2">
+                Data Scientist &amp; Machine Learning Developer
+              </p>
+
+              {/* Focused 1–2 Sentence Statement */}
+              <p className="mt-4 text-slate-300 leading-relaxed text-sm sm:text-base max-w-xl">
+                I build predictive machine learning models, end-to-end data pipelines, and interactive decision dashboards. Grounded in engineering discipline, I turn complex telemetry and real-world datasets into clear operational intelligence.
+              </p>
+
+              {/* Direct Primary CTAs */}
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-7">
+                <a 
+                  href="#projects" 
+                  className="min-h-[44px] bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-xl font-bold transition-all text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 active:scale-95"
+                >
+                  <span>View Projects</span>
+                  <ArrowDown size={15} />
+                </a>
+
+                <a 
+                  href="#contact" 
+                  className="min-h-[44px] border border-white/[0.12] hover:border-cyan-500/40 bg-slate-900/60 hover:bg-slate-900 text-slate-200 hover:text-white px-5 py-2.5 rounded-xl font-semibold transition-all text-sm flex items-center justify-center gap-2 active:scale-95"
+                >
+                  <span>Contact Me</span>
+                </a>
+
+                <button
+                  onClick={() => setCvModalOpen(true)}
+                  className="min-h-[44px] border border-white/[0.08] hover:border-white/20 bg-slate-900/40 hover:bg-slate-900 text-slate-300 hover:text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors flex items-center justify-center gap-1.5"
+                  aria-label="View Resume Summary"
+                >
+                  <FileText size={14} className="text-cyan-400" />
+                  <span>Resume</span>
+                </button>
+              </div>
+
+              {/* Subtle Social Links */}
+              <div className="flex items-center justify-center md:justify-start gap-4 mt-7 pt-5 border-t border-white/[0.06] text-xs text-slate-400">
                 <a 
                   href="https://github.com/abdelhaym953-create" 
                   target="_blank" 
-                  rel="noopener noreferrer" 
-                  aria-label="GitHub Profile"
-                  className="p-3 border border-white/[0.08] text-slate-300 hover:text-white hover:border-white/20 bg-zinc-900/40 rounded-xl transition-all"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors p-1"
                 >
-                  <FaGithub size={16} />
+                  <FaGithub size={15} />
+                  <span>GitHub</span>
                 </a>
+                <span className="text-white/10">•</span>
                 <a 
                   href="https://www.linkedin.com/in/mohamed-abdelhay-3361a2308" 
                   target="_blank" 
-                  rel="noopener noreferrer" 
-                  aria-label="LinkedIn Profile"
-                  className="p-3 border border-white/[0.08] text-slate-300 hover:text-white hover:border-white/20 bg-zinc-900/40 rounded-xl transition-all"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors p-1"
                 >
-                  <FaLinkedin size={16} />
+                  <FaLinkedin size={15} />
+                  <span>LinkedIn</span>
+                </a>
+                <span className="text-white/10">•</span>
+                <a 
+                  href="mailto:abdelhaym953@gmail.com"
+                  className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors p-1"
+                >
+                  <Mail size={15} />
+                  <span>abdelhaym953@gmail.com</span>
                 </a>
               </div>
+
             </div>
 
-            {/* Credible Technical Indicators (Verifiable only - no fake numbers!) */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mt-9 pt-6 border-t border-white/[0.08] w-full">
-              <div className="bg-zinc-900/40 border border-white/[0.06] rounded-xl p-3 text-left">
-                <div className="flex items-center gap-1.5 text-yellow-400 mb-1">
-                  <Activity size={13} />
-                  <span className="text-[11px] font-bold">4 Live</span>
-                </div>
-                <p className="text-[10px] text-slate-400 leading-tight">
-                  Streamlit Cloud Apps
-                </p>
-              </div>
-
-              <div className="bg-zinc-900/40 border border-white/[0.06] rounded-xl p-3 text-left">
-                <div className="flex items-center gap-1.5 text-yellow-400 mb-1">
-                  <Cpu size={13} />
-                  <span className="text-[11px] font-bold">GBDT Focus</span>
-                </div>
-                <p className="text-[10px] text-slate-400 leading-tight">
-                  LightGBM & CatBoost
-                </p>
-              </div>
-
-              <div className="bg-zinc-900/40 border border-white/[0.06] rounded-xl p-3 text-left">
-                <div className="flex items-center gap-1.5 text-yellow-400 mb-1">
-                  <GraduationCap size={13} />
-                  <span className="text-[11px] font-bold">B.Sc. Eng</span>
-                </div>
-                <p className="text-[10px] text-slate-400 leading-tight">
-                  Solar Energy Focus
-                </p>
-              </div>
-
-              <div className="bg-zinc-900/40 border border-white/[0.06] rounded-xl p-3 text-left">
-                <div className="flex items-center gap-1.5 text-yellow-400 mb-1">
-                  <Terminal size={13} />
-                  <span className="text-[11px] font-bold">100% Code</span>
-                </div>
-                <p className="text-[10px] text-slate-400 leading-tight">
-                  Open Source on GitHub
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* 2. Right: Profile Presentation with Neural Lattice (5 cols) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.94 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="md:col-span-5 flex justify-center w-full relative"
-          >
-            <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-[320px] md:h-[320px] flex items-center justify-center">
-              
-              {/* Discrete Neural Graph Background */}
+            {/* Right: Portrait with Subtle Data Lattice Geometry */}
+            <div className="shrink-0 flex justify-center relative">
+              {/* Subtle Data Science Neural Lattice */}
               <DataLattice />
 
-              {/* Architectural Frame */}
-              <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/[0.12] shadow-2xl bg-zinc-900/80 p-1.5 group">
-                <div className="w-full h-full rounded-xl overflow-hidden relative">
+              <div className="relative w-36 h-36 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-3xl overflow-hidden border-2 border-white/[0.1] bg-slate-900 shadow-2xl p-1 group hover:border-cyan-500/40 transition-colors duration-300">
+                <div className="w-full h-full rounded-2xl overflow-hidden relative">
                   <Image
                     src="/me.jpeg"
-                    alt="Mohamed Abdelhay - Data Scientist & AI Engineer"
+                    alt="Mohamed Abdelhay"
                     fill
-                    sizes="(max-width: 768px) 240px, 320px"
+                    sizes="(max-width: 640px) 144px, (max-width: 768px) 192px, 224px"
                     priority
-                    className="object-cover object-center group-hover:scale-102 transition-transform duration-500"
+                    className="object-cover object-center"
                   />
-                  
-                  {/* Subtle Dark Vignette at base of photo */}
-                  <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-zinc-950/80 to-transparent pointer-events-none" />
                 </div>
               </div>
-
-              {/* Floating Verified Spec Badge */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-zinc-900/95 border border-white/[0.1] px-4 py-1.5 rounded-full shadow-xl flex items-center gap-2 whitespace-nowrap">
-                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
-                <span className="text-[11px] font-mono font-semibold text-slate-200">
-                  Solar ML • Predictive AI
-                </span>
-              </div>
             </div>
-          </motion.div>
 
+          </div>
         </div>
       </section>
 
-      {/* ==================== CONTENT SECTIONS ==================== */}
-      <About />
-      <Experience />
-      <Skills />
+      {/* ==================== 2. SELECTED PROJECTS (PROGRESSIVE DISCLOSURE TABS) ==================== */}
       <Projects />
+
+      {/* ==================== 3. TECHNICAL SKILLS (INTERACTIVE CATEGORIES) ==================== */}
+      <Skills />
+
+      {/* ==================== 4. ABOUT (SHORT + EXPANDABLE DETAILS) ==================== */}
+      <About />
+
+      {/* ==================== 5. EXPERIENCE & TRAJECTORY (INTERACTIVE TIMELINE) ==================== */}
+      <Experience />
+
+      {/* ==================== 6. CONTACT SECTION (PROMINENT & DIRECT) ==================== */}
       <Contact />
+
+      {/* ==================== 7. MINIMAL FOOTER ==================== */}
       <Footer />
 
-      {/* ==================== EXECUTIVE RESUME MODAL ==================== */}
+      {/* ==================== RESUME SUMMARY MODAL ==================== */}
       <AnimatePresence>
         {cvModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              initial={{ opacity: 0, scale: 0.96, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              className="bg-zinc-900 border border-white/[0.12] rounded-2xl max-w-lg w-full p-6 relative shadow-2xl"
+              exit={{ opacity: 0, scale: 0.96, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="bg-[#0b101c] border border-white/[0.12] rounded-3xl max-w-lg w-full p-6 sm:p-7 relative shadow-2xl"
             >
               <button
                 onClick={() => setCvModalOpen(false)}
-                className="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-white/5 transition-colors"
+                className="absolute top-5 right-5 text-slate-400 hover:text-white p-2 rounded-xl hover:bg-white/5 transition-colors"
                 aria-label="Close modal"
               >
                 <X size={18} />
               </button>
 
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-yellow-400/10 border border-yellow-400/25 flex items-center justify-center text-yellow-400">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
                   <FileText size={18} />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white">Mohamed Abdelhay — Technical Profile</h3>
-                  <p className="text-xs text-slate-400">Data Scientist & Machine Learning Engineer</p>
+                  <h3 className="text-base sm:text-lg font-bold text-white">Mohamed Abdelhay</h3>
+                  <p className="text-xs text-slate-400">Data Scientist &amp; Machine Learning Developer</p>
                 </div>
               </div>
 
-              <div className="bg-zinc-950/80 border border-white/[0.08] rounded-xl p-4 text-xs text-slate-300 space-y-3 mb-5">
+              <div className="bg-slate-950/70 border border-white/[0.06] rounded-2xl p-4 text-xs text-slate-300 space-y-3 mb-5">
                 <div>
-                  <span className="text-yellow-400 font-semibold block text-[11px] uppercase tracking-wider mb-1">
+                  <span className="text-cyan-400 font-bold block text-[11px] uppercase tracking-wider mb-0.5">
                     Academic Background
                   </span>
-                  <p>
-                    B.Sc. in Agricultural & Biosystems Engineering (Solar Energy focus), Al-Azhar University (Expected 2027). Coursework in physical systems modeling, thermodynamics, and applied statistics.
+                  <p className="leading-relaxed">
+                    B.Sc. in Agricultural &amp; Biosystems Engineering (Solar Energy focus), Al-Azhar University (Expected 2027). Coursework in physical systems modeling, thermodynamics, differential equations, and statistical inference.
                   </p>
                 </div>
 
                 <div>
-                  <span className="text-yellow-400 font-semibold block text-[11px] uppercase tracking-wider mb-1">
+                  <span className="text-amber-400 font-bold block text-[11px] uppercase tracking-wider mb-0.5">
                     Core Technical Stack
                   </span>
-                  <p>
-                    Python, LightGBM, XGBoost, CatBoost, Scikit-Learn, Pandas, NumPy, SQL, Streamlit, Plotly, Git, Data Cleaning, Feature Engineering.
+                  <p className="leading-relaxed font-mono text-[11px] text-slate-200">
+                    Python, LightGBM, CatBoost, XGBoost, Scikit-Learn, Pandas, NumPy, SQL, Streamlit, Plotly, Git, Feature Engineering, TimeSeriesSplit.
                   </p>
                 </div>
 
                 <div>
-                  <span className="text-yellow-400 font-semibold block text-[11px] uppercase tracking-wider mb-1">
-                    Key Practical Projects
+                  <span className="text-emerald-400 font-bold block text-[11px] uppercase tracking-wider mb-0.5">
+                    Flagship Practical Implementations
                   </span>
-                  <p>
-                    Solar Radiation Prediction Engine (LightGBM regression), DataVision AI (Autonomous EDA with LLMs), Online Sales Intelligence Dashboard, Hotel Booking Cancellation Modeling, Mobile Sentiment Analysis (CatBoost).
+                  <p className="leading-relaxed">
+                    Solar Radiation Prediction Engine (R² = 0.941), DataVision AI (Autonomous profiling + LLM summaries), Online Sales Cohort Platform, Hotel Booking Cancellation AUC = 0.89, Mobile Sentiment NLP Engine.
                   </p>
                 </div>
               </div>
@@ -282,18 +234,18 @@ export default function Home() {
                   href="https://www.linkedin.com/in/mohamed-abdelhay-3361a2308"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 bg-yellow-400 text-zinc-950 font-bold text-xs py-2.5 rounded-xl text-center hover:bg-yellow-300 transition-colors flex items-center justify-center gap-2 shadow-sm"
+                  className="flex-1 min-h-[44px] bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm shadow-cyan-500/20"
                 >
                   <ExternalLink size={13} />
-                  <span>LinkedIn Profile</span>
+                  <span>Connect on LinkedIn</span>
                 </a>
                 
                 <button
                   onClick={handleCopyEmail}
-                  className="px-4 py-2.5 border border-white/[0.12] hover:border-yellow-400/40 text-slate-200 hover:text-white text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 bg-white/[0.03]"
+                  className="min-h-[44px] px-4 border border-white/[0.12] hover:border-cyan-500/40 text-slate-200 hover:text-white text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 bg-slate-900/60"
                 >
-                  {copiedEmail ? <Check size={13} className="text-emerald-400" /> : <Mail size={13} />}
-                  <span>{copiedEmail ? "Email Copied to Clipboard!" : "Copy Email to Request CV"}</span>
+                  {copiedEmail ? <Check size={14} className="text-emerald-400" /> : <Mail size={14} />}
+                  <span>{copiedEmail ? "Email Copied!" : "Copy Email"}</span>
                 </button>
               </div>
             </motion.div>
