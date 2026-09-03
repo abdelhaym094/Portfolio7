@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -15,7 +15,9 @@ import {
   CheckCircle2,
   Layers,
   BarChart3,
-  Code2
+  Code2,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import SectionHeader from "@/components/SectionHeader";
@@ -213,16 +215,209 @@ const categoryTabs = [
   "Analytics & BI"
 ];
 
+function ProjectCard({ project, onOpenDetails, onLaunchLive, isFeatured = false }) {
+  const highlightMetric =
+    project.results?.metrics?.find((m) => m.highlight) ||
+    project.results?.metrics?.[0];
+
+  return (
+    <article
+      className={`bg-slate-900/40 border border-white/[0.08] hover:border-cyan-500/40 rounded-2xl p-4 sm:p-5 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 h-full shadow-lg ${
+        isFeatured ? "ring-1 ring-cyan-500/20" : ""
+      }`}
+    >
+      <div>
+        {/* 1. IMAGE / VISUAL HIERARCHY (Compact, Recognizable Technical Visual) */}
+        <div className="h-20 sm:h-24 w-full rounded-xl bg-slate-950/80 border border-white/[0.06] p-3 flex flex-col justify-between relative overflow-hidden mb-3.5 group-hover:border-white/[0.12] transition-colors">
+          {/* Subtle Ambient Telemetry Wave Graphic */}
+          <div className="absolute inset-0 opacity-20 pointer-events-none flex items-center justify-end pr-3 overflow-hidden">
+            {project.id === "solar-radiation-prediction" && (
+              <svg viewBox="0 0 160 50" className="w-36 h-12 text-amber-400 stroke-current fill-none stroke-[1.5]">
+                <path d="M0,40 Q30,38 50,15 T100,8 T135,35 T160,40" />
+                <circle cx="80" cy="14" r="3.5" className="fill-amber-400" />
+              </svg>
+            )}
+            {project.id === "datavision-ai" && (
+              <svg viewBox="0 0 160 50" className="w-36 h-12 text-cyan-400 stroke-current fill-none stroke-[1.5]">
+                <path d="M5,42 L35,22 L65,35 L95,12 L125,28 L155,8" />
+                <circle cx="95" cy="12" r="3" className="fill-cyan-400" />
+                <circle cx="155" cy="8" r="3" className="fill-cyan-400" />
+              </svg>
+            )}
+            {project.id === "online-sales-dashboard" && (
+              <svg viewBox="0 0 160 50" className="w-36 h-12 text-emerald-400 stroke-current fill-none stroke-[1.5]">
+                <rect x="25" y="28" width="10" height="18" className="fill-emerald-400/30" />
+                <rect x="45" y="20" width="10" height="26" className="fill-emerald-400/45" />
+                <rect x="65" y="12" width="10" height="34" className="fill-emerald-400/60" />
+                <rect x="85" y="16" width="10" height="30" className="fill-emerald-400/50" />
+                <rect x="105" y="8" width="10" height="38" className="fill-emerald-400/80" />
+              </svg>
+            )}
+            {project.id === "hotel-booking-dashboard" && (
+              <svg viewBox="0 0 160 50" className="w-36 h-12 text-sky-400 stroke-current fill-none stroke-[1.5]">
+                <path d="M5,42 C40,42 60,8 155,8" />
+                <path d="M5,42 L155,8" strokeDasharray="3 3" opacity="0.4" />
+              </svg>
+            )}
+            {project.id === "mobile-sentiment-analysis" && (
+              <svg viewBox="0 0 160 50" className="w-36 h-12 text-purple-400 stroke-current fill-none stroke-[1.5]">
+                <path d="M10,25 Q40,8 75,25 T135,25 T160,12" />
+                <circle cx="75" cy="25" r="3" className="fill-purple-400" />
+              </svg>
+            )}
+          </div>
+
+          {/* Top Identifier Row */}
+          <div className="flex items-center justify-between relative z-10">
+            <span className="text-[10px] font-mono font-semibold text-slate-400 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 inline-block animate-pulse" />
+              {project.id.replace(/-/g, "_")}
+            </span>
+            {isFeatured && (
+              <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-cyan-300 bg-cyan-500/15 border border-cyan-500/30 px-2 py-0.5 rounded">
+                Featured
+              </span>
+            )}
+          </div>
+
+          {/* Bottom Metric Row */}
+          <div className="flex items-end justify-between relative z-10 pt-1">
+            <div>
+              <span className="text-[9px] uppercase tracking-wider text-slate-400 block font-medium">
+                {highlightMetric?.label || "Key Metric"}
+              </span>
+              <span className="text-xs sm:text-sm font-mono font-bold text-white tracking-tight">
+                {highlightMetric?.value}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* 2. PROJECT TITLE */}
+        <h3 className="text-base sm:text-lg font-bold text-white mb-1.5 group-hover:text-cyan-300 transition-colors line-clamp-2">
+          {project.title}
+        </h3>
+
+        {/* 3. CATEGORY */}
+        <div className="mb-2.5">
+          <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-0.5 rounded-md inline-block">
+            {project.category}
+          </span>
+        </div>
+
+        {/* 4. SHORT DESCRIPTION */}
+        <p className="text-xs sm:text-sm text-slate-300/90 leading-relaxed mb-4 line-clamp-3">
+          {project.oneLiner}
+        </p>
+      </div>
+
+      <div>
+        {/* 5. TECH TAGS (2-4 Key Technologies) */}
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {project.technologies.slice(0, 4).map((tech) => (
+            <span
+              key={tech}
+              className="text-[11px] font-medium text-slate-300 bg-slate-800/80 border border-white/[0.05] px-2.5 py-0.5 rounded-md"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* 6. ACTION: View Details (with Live App and GitHub options) */}
+        <div className="flex items-center justify-between gap-2 pt-3 border-t border-white/[0.06]">
+          <button
+            onClick={() => onOpenDetails(project)}
+            className="flex-1 min-h-[40px] bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all shadow-sm shadow-cyan-500/20 flex items-center justify-center gap-1.5 group/btn active:scale-98"
+          >
+            <span>View Details</span>
+            <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform motion-reduce:transform-none" />
+          </button>
+
+          {project.live && (
+            <button
+              onClick={(e) => onLaunchLive(e, project.live)}
+              className="min-h-[40px] border border-white/[0.1] hover:border-amber-400/40 text-amber-300 hover:text-amber-200 bg-slate-800/50 hover:bg-slate-800 px-3 py-2 rounded-xl text-xs font-semibold transition-colors flex items-center gap-1.5"
+              title="Launch live interactive app"
+            >
+              <Rocket size={13} className="text-amber-400" />
+              <span>Live App</span>
+            </button>
+          )}
+
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Source code for ${project.title}`}
+            className="min-h-[40px] min-w-[40px] border border-white/[0.08] hover:border-white/20 text-slate-400 hover:text-white p-2 rounded-xl transition-colors bg-slate-800/40 hover:bg-slate-800 flex items-center justify-center"
+          >
+            <FaGithub size={15} />
+          </a>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [activeProject, setActiveProject] = useState(null);
   const [activeTab, setActiveTab] = useState("overview"); // overview | methodology | results | techStack
   const [streamlitModalUrl, setStreamlitModalUrl] = useState(null);
 
+  // Mobile carousel tracking
+  const carouselRef = useRef(null);
+  const [activeMobileIndex, setActiveMobileIndex] = useState(0);
+
   const filteredProjects = projectsData.filter((p) => {
     if (selectedCategory === "All") return true;
     return p.category === selectedCategory;
   });
+
+  const handleSelectCategory = (cat) => {
+    setSelectedCategory(cat);
+    setActiveMobileIndex(0);
+    if (carouselRef.current) {
+      carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleCarouselScroll = () => {
+    if (!carouselRef.current) return;
+    const container = carouselRef.current;
+    const scrollLeft = container.scrollLeft;
+    const children = Array.from(container.children);
+    if (children.length === 0) return;
+
+    const containerCenter = scrollLeft + container.offsetWidth / 2;
+    let closestIndex = 0;
+    let minDiff = Infinity;
+
+    children.forEach((child, index) => {
+      const childCenter = child.offsetLeft + child.offsetWidth / 2;
+      const diff = Math.abs(containerCenter - childCenter);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIndex = index;
+      }
+    });
+
+    setActiveMobileIndex(closestIndex);
+  };
+
+  const scrollToProject = (index) => {
+    if (!carouselRef.current) return;
+    const children = carouselRef.current.children;
+    if (children[index]) {
+      children[index].scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+      setActiveMobileIndex(index);
+    }
+  };
 
   const handleOpenDetails = (project) => {
     setActiveProject(project);
@@ -256,7 +451,7 @@ export default function Projects() {
               return (
                 <button
                   key={cat}
-                  onClick={() => setSelectedCategory(cat)}
+                  onClick={() => handleSelectCategory(cat)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 ${
                     isSelected
                       ? "bg-cyan-500 text-slate-950 shadow-sm shadow-cyan-500/20"
@@ -270,78 +465,88 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* Minimal, Disciplined Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filteredProjects.map((project) => (
-            <article
-              key={project.id}
-              className="bg-slate-900/40 border border-white/[0.08] hover:border-cyan-500/40 rounded-2xl p-5 transition-all duration-200 flex flex-col justify-between group"
-            >
-              <div>
-                {/* Category Pill */}
-                <div className="mb-2.5">
-                  <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-0.5 rounded-md">
-                    {project.category}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
-                  {project.title}
-                </h3>
-
-                {/* One-Line Description */}
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-                  {project.oneLiner}
-                </p>
+        {/* Mobile Horizontal Swipeable Carousel (md:hidden) */}
+        <div className="md:hidden w-full overflow-hidden">
+          <div
+            ref={carouselRef}
+            onScroll={handleCarouselScroll}
+            className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 pb-2 pt-0.5 scrollbar-none scroll-smooth items-stretch -mx-4 px-4 sm:-mx-6 sm:px-6"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
+            {filteredProjects.map((project, idx) => (
+              <div
+                key={project.id}
+                className="w-[84vw] max-w-[340px] shrink-0 snap-center flex flex-col"
+              >
+                <ProjectCard
+                  project={project}
+                  onOpenDetails={handleOpenDetails}
+                  onLaunchLive={handleLaunchLive}
+                  isFeatured={idx === 0 && selectedCategory === "All"}
+                />
               </div>
+            ))}
+          </div>
 
-              <div>
-                {/* 3-4 Key Technologies */}
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {project.technologies.slice(0, 4).map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-[11px] font-medium text-slate-300 bg-slate-800/80 border border-white/[0.05] px-2.5 py-0.5 rounded-md"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Actions: View Details, Live App, GitHub */}
-                <div className="flex items-center justify-between gap-2 pt-3 border-t border-white/[0.06]">
+          {/* Mobile Pagination Indicator & Nav Controls */}
+          {filteredProjects.length > 1 && (
+            <div className="flex items-center justify-between px-1 mt-3">
+              {/* Pagination Dots */}
+              <div className="flex items-center gap-1.5" role="tablist" aria-label="Project slide indicator">
+                {filteredProjects.map((_, idx) => (
                   <button
-                    onClick={() => handleOpenDetails(project)}
-                    className="flex-1 min-h-[40px] bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all shadow-sm shadow-cyan-500/20 flex items-center justify-center gap-1.5 active:scale-98"
+                    key={idx}
+                    onClick={() => scrollToProject(idx)}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      activeMobileIndex === idx
+                        ? "w-5 bg-cyan-400"
+                        : "w-1.5 bg-slate-700 hover:bg-slate-500"
+                    }`}
+                    aria-label={`Jump to project ${idx + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Progress Count & Step Buttons */}
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-mono text-slate-400">
+                  <span className="text-cyan-400 font-bold">{activeMobileIndex + 1}</span>
+                  <span className="text-slate-600"> / </span>
+                  <span>{filteredProjects.length}</span>
+                </span>
+                <div className="flex items-center gap-1">
+                  <button
+                    onClick={() => scrollToProject(activeMobileIndex - 1)}
+                    disabled={activeMobileIndex === 0}
+                    className="p-1.5 rounded-lg border border-white/[0.08] text-slate-400 hover:text-white disabled:opacity-25 disabled:pointer-events-none transition-colors min-h-[32px] min-w-[32px] flex items-center justify-center active:bg-white/[0.05]"
+                    aria-label="Previous project"
                   >
-                    <span>View Details</span>
-                    <ArrowRight size={13} />
+                    <ChevronLeft size={14} />
                   </button>
-
-                  {project.live && (
-                    <button
-                      onClick={(e) => handleLaunchLive(e, project.live)}
-                      className="min-h-[40px] border border-white/[0.1] hover:border-amber-400/40 text-amber-300 hover:text-amber-200 bg-slate-800/50 hover:bg-slate-800 px-3 py-2 rounded-xl text-xs font-semibold transition-colors flex items-center gap-1.5"
-                      title="Launch live interactive app"
-                    >
-                      <Rocket size={13} className="text-amber-400" />
-                      <span>Live App</span>
-                    </button>
-                  )}
-
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Source code for ${project.title}`}
-                    className="min-h-[40px] min-w-[40px] border border-white/[0.08] hover:border-white/20 text-slate-400 hover:text-white p-2 rounded-xl transition-colors bg-slate-800/40 hover:bg-slate-800 flex items-center justify-center"
+                  <button
+                    onClick={() => scrollToProject(activeMobileIndex + 1)}
+                    disabled={activeMobileIndex === filteredProjects.length - 1}
+                    className="p-1.5 rounded-lg border border-white/[0.08] text-slate-400 hover:text-white disabled:opacity-25 disabled:pointer-events-none transition-colors min-h-[32px] min-w-[32px] flex items-center justify-center active:bg-white/[0.05]"
+                    aria-label="Next project"
                   >
-                    <FaGithub size={15} />
-                  </a>
+                    <ChevronRight size={14} />
+                  </button>
                 </div>
               </div>
-            </article>
+            </div>
+          )}
+        </div>
+
+        {/* Desktop / Tablet Curated 2-Column Showcase Grid (hidden md:grid) */}
+        <div className="hidden md:grid md:grid-cols-2 gap-4 lg:gap-5">
+          {filteredProjects.map((project, idx) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onOpenDetails={handleOpenDetails}
+              onLaunchLive={handleLaunchLive}
+              isFeatured={idx === 0 && selectedCategory === "All"}
+            />
           ))}
         </div>
 
