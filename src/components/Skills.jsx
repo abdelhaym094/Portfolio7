@@ -15,6 +15,7 @@ const skillCategories = [
   {
     id: "ml",
     title: "Machine Learning",
+    shortTitle: "ML",
     badge: "Supervised & Gradient Boosting",
     icon: BrainCircuit,
     description: "Building gradient-boosted decision trees, ensemble pipelines, and strict temporal validation frameworks.",
@@ -54,6 +55,7 @@ const skillCategories = [
   {
     id: "data-science",
     title: "Data Science",
+    shortTitle: "Data",
     badge: "Statistical Profiling & ETL",
     icon: Database,
     description: "Vectorized manipulation, dimensional modeling, and statistical feature engineering on multi-channel records.",
@@ -93,6 +95,7 @@ const skillCategories = [
   {
     id: "ai-llm",
     title: "AI & LLM",
+    shortTitle: "AI",
     badge: "Hybrid Systems & NLP",
     icon: Sparkles,
     description: "Combining deterministic mathematical profiling with large language models and natural language processing.",
@@ -127,6 +130,7 @@ const skillCategories = [
   {
     id: "viz-bi",
     title: "Visualization & BI",
+    shortTitle: "BI",
     badge: "Interactive Decision Tools",
     icon: BarChart3,
     description: "Designing responsive, intuitive dashboards where operators and stakeholders can inspect metrics and simulate scenarios.",
@@ -161,6 +165,7 @@ const skillCategories = [
   {
     id: "engineering",
     title: "Engineering",
+    shortTitle: "Engineering",
     badge: "Reproducibility & Hosting",
     icon: TerminalSquare,
     description: "Building reproducible, version-controlled machine learning pipelines packaged for dependable cloud hosting.",
@@ -196,7 +201,6 @@ const skillCategories = [
 
 export default function Skills() {
   const [activeTab, setActiveTab] = useState("ml");
-  const [selectedTech, setSelectedTech] = useState(null);
 
   const currentCategory = skillCategories.find((c) => c.id === activeTab) || skillCategories[0];
   const IconComponent = currentCategory.icon;
@@ -215,91 +219,146 @@ export default function Skills() {
           className="mb-4 sm:mb-6"
         />
 
-        {/* Interactive Category Tabs */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-2 mb-5 scrollbar-none">
-          {skillCategories.map((cat) => {
-            const isCurrent = activeTab === cat.id;
-            const TabIcon = cat.icon;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => {
-                  setActiveTab(cat.id);
-                  setSelectedTech(null);
-                }}
-                className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap min-h-[40px] ${
-                  isCurrent
-                    ? "bg-cyan-500 text-slate-950 shadow-sm shadow-cyan-500/25 scale-[1.02]"
-                    : "bg-slate-900/50 border border-white/[0.06] text-slate-300 hover:text-white hover:bg-slate-900"
-                }`}
-              >
-                <TabIcon size={14} />
-                <span>{cat.title}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Active Domain Container */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentCategory.id}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.18 }}
-            className="bg-slate-900/40 border border-white/[0.08] rounded-2xl p-4 sm:p-6 shadow-xl"
+        {/* Mobile Horizontal Swipeable Category Selector (md:hidden) */}
+        <div className="md:hidden mb-4 -mx-4 px-4 overflow-hidden">
+          <div 
+            className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none snap-x"
+            style={{ WebkitOverflowScrolling: "touch" }}
+            role="tablist"
+            aria-label="Skill categories"
           >
-            {/* Domain Overview Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-4 border-b border-white/[0.06]">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">
-                  <IconComponent size={16} />
-                </div>
-                <div>
-                  <h3 className="text-base sm:text-lg font-bold text-white">
-                    {currentCategory.title}
-                  </h3>
-                  <span className="text-[11px] font-mono text-cyan-400">
-                    {currentCategory.badge}
-                  </span>
-                </div>
-              </div>
-
-              <p className="text-xs text-slate-300 max-w-sm leading-relaxed">
-                {currentCategory.description}
-              </p>
-            </div>
-
-            {/* Interactive Technologies Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-              {currentCategory.technologies.map((tech) => (
-                <div
-                  key={tech.name}
-                  onClick={() => setSelectedTech(selectedTech === tech.name ? null : tech.name)}
-                  className={`cursor-pointer bg-slate-950/60 border rounded-xl p-3.5 transition-all duration-150 group ${
-                    selectedTech === tech.name 
-                      ? "border-cyan-500/50 bg-slate-950" 
-                      : "border-white/[0.06] hover:border-cyan-500/30"
+            {skillCategories.map((cat) => {
+              const isCurrent = activeTab === cat.id;
+              const TabIcon = cat.icon;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveTab(cat.id)}
+                  role="tab"
+                  aria-selected={isCurrent}
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap min-h-[38px] snap-center ${
+                    isCurrent
+                      ? "bg-cyan-500 text-slate-950 shadow-sm shadow-cyan-500/20"
+                      : "bg-slate-900/60 border border-white/[0.08] text-slate-300 hover:text-white"
                   }`}
                 >
-                  <div className="flex items-center justify-between gap-2 mb-1.5">
-                    <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">
-                      {tech.name}
-                    </h4>
-                    <span className="text-[10px] font-mono font-medium text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded">
-                      {tech.type}
+                  <TabIcon size={13} className={isCurrent ? "text-slate-950" : "text-cyan-400"} />
+                  <span>{cat.shortTitle}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Desktop Interactive Two-Part Explorer (Left: Category Nav, Right: Selected Skills) */}
+        <div className="bg-slate-900/40 border border-white/[0.08] rounded-2xl p-4 sm:p-5 lg:p-6 shadow-xl">
+          <div className="flex flex-col md:flex-row gap-5 lg:gap-7 items-start">
+            
+            {/* Left Category Selector Column (Desktop md:w-60 lg:w-64) */}
+            <div className="hidden md:flex flex-col gap-1.5 w-56 lg:w-64 shrink-0" role="tablist" aria-label="Technical domains">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 px-2 pb-1 font-semibold">
+                Select Domain
+              </span>
+              {skillCategories.map((cat) => {
+                const isCurrent = activeTab === cat.id;
+                const TabIcon = cat.icon;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveTab(cat.id)}
+                    role="tab"
+                    aria-selected={isCurrent}
+                    className={`w-full text-left flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-xl transition-all duration-200 group ${
+                      isCurrent
+                        ? "bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20"
+                        : "bg-slate-950/40 hover:bg-slate-950 border border-white/[0.05] hover:border-cyan-500/30 text-slate-300 hover:text-white"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className={`p-1.5 rounded-lg shrink-0 ${
+                        isCurrent ? "bg-slate-950 text-cyan-400" : "bg-white/[0.05] text-slate-400 group-hover:text-cyan-300"
+                      }`}>
+                        <TabIcon size={14} />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold truncate">
+                          {cat.title}
+                        </div>
+                        <div className={`text-[10px] truncate ${isCurrent ? "text-slate-900 font-medium" : "text-slate-400"}`}>
+                          {cat.badge}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded shrink-0 ${
+                      isCurrent ? "bg-slate-950/20 text-slate-950 font-bold" : "text-slate-400 bg-white/[0.04]"
+                    }`}>
+                      {cat.technologies.length}
                     </span>
-                  </div>
-                  <p className="text-xs text-slate-300 leading-relaxed">
-                    {tech.role}
-                  </p>
-                </div>
-              ))}
+                  </button>
+                );
+              })}
             </div>
 
-          </motion.div>
-        </AnimatePresence>
+            {/* Right Skills Display Column (flex-1) */}
+            <div className="flex-1 min-w-0 w-full">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentCategory.id}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.22, ease: "easeOut" }}
+                  className="w-full"
+                >
+                  {/* Selected Domain Header */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3.5 mb-4 border-b border-white/[0.06]">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">
+                        <IconComponent size={16} />
+                      </div>
+                      <div>
+                        <h3 className="text-base font-bold text-white leading-tight">
+                          {currentCategory.title}
+                        </h3>
+                        <span className="text-[11px] font-mono text-cyan-400 font-medium">
+                          {currentCategory.badge}
+                        </span>
+                      </div>
+                    </div>
+
+                    <p className="text-xs text-slate-300/90 max-w-sm leading-relaxed sm:text-right">
+                      {currentCategory.description}
+                    </p>
+                  </div>
+
+                  {/* Clean Skill Chips / Cards Grid (No fake percentages) */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {currentCategory.technologies.map((tech) => (
+                      <div
+                        key={tech.name}
+                        className="bg-slate-950/70 border border-white/[0.06] hover:border-cyan-500/30 rounded-xl p-3 transition-colors duration-200 group"
+                      >
+                        <div className="flex items-center justify-between gap-2 mb-1">
+                          <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">
+                            {tech.name}
+                          </h4>
+                          <span className="text-[9px] font-mono font-medium text-slate-400 bg-white/[0.04] border border-white/[0.05] px-1.5 py-0.5 rounded shrink-0">
+                            {tech.type}
+                          </span>
+                        </div>
+                        <p className="text-[11px] sm:text-xs text-slate-300/90 leading-relaxed">
+                          {tech.role}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+          </div>
+        </div>
 
       </div>
     </section>
