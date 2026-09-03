@@ -7,20 +7,19 @@ export default function TypingText() {
   const el = useRef(null);
 
   useEffect(() => {
-    // التأكد من أن العنصر موجود فعلياً في الـ DOM قبل البدء
     if (!el.current) return;
 
     const typed = new Typed(el.current, {
       strings: [
-        "Data Scientist",
-        "Machine Learning Engineer",
-        "AI Enthusiast",
-        "Data Analyst"
+        "Data Scientist & ML Engineer",
+        "Predictive Modeling Specialist",
+        "AI Solutions Developer",
+        "Business Intelligence Architect"
       ],
-      typeSpeed: 60,       // سرعة كتابة متزنة ومريحة للعين
-      backSpeed: 40,       // سرعة مسح رشيقة
-      backDelay: 1500,     // وقت انتظار مريح للقراءة
-      startDelay: 300,     // تأخير بسيط قبل البدء
+      typeSpeed: 55,
+      backSpeed: 35,
+      backDelay: 1600,
+      startDelay: 200,
       loop: true,
       cursorChar: "|",
       autoInsertCss: true,
@@ -32,11 +31,10 @@ export default function TypingText() {
   }, []);
 
   return (
-    <span className="inline-flex items-center">
+    <span className="inline-flex items-center min-h-[38px] leading-normal">
       <span
         ref={el}
         className="text-yellow-400 font-bold select-none [&+.typed-cursor]:text-yellow-400 [&+.typed-cursor]:font-extralight"
-        style={{ minHeight: "1.5em" }} // حجز مساحة رأسية منعاً لاهتزاز النصوص المحيطة
       />
     </span>
   );

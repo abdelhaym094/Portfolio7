@@ -33,25 +33,26 @@ const achievementsData = [
     icon: <FaProjectDiagram />,
     number: 10,
     suffix: "+",
-    text: "Data Projects Completed",
+    text: "ML & Analytics Projects",
   },
   {
     icon: <FaChartBar />,
-    number: 5,
-    suffix: "+",
-    text: "Interactive Dashboards",
+    number: 4,
+    suffix: " Live",
+    text: "Interactive Cloud Apps",
   },
   {
     icon: <FaRobot />,
     isText: true,
-    textVal: "ML / DL",
-    text: "AI & Predictive Models",
+    textVal: "0.94",
+    suffix: " R²",
+    text: "Solar Model Accuracy",
   },
   {
     icon: <FaTrophy />,
     isText: true,
-    textVal: "Kaggle",
-    text: "Competitions & Notebooks",
+    textVal: "100%",
+    text: "Reproducible & Documented",
   },
 ];
 
@@ -84,8 +85,9 @@ export default function Achievements() {
               {/* Achievement Value */}
               <h3 className="text-xl sm:text-2xl font-black tracking-tight text-slate-100 relative z-10 flex items-center justify-center">
                 {item.isText ? (
-                  <span className="text-slate-100">
+                  <span className="text-slate-100 flex items-center justify-center">
                     {item.textVal}
+                    {item.suffix && <span className="text-yellow-400 ml-0.5">{item.suffix}</span>}
                   </span>
                 ) : (
                   <span className="flex justify-center items-center">
